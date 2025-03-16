@@ -1,0 +1,110 @@
+# # Definitions of tags to detect
+#
+# ## General remarks
+#
+# - All length in meters
+# - 'size' refers to the length of the shared border between solid black and solid white rectangle.
+#   See README.md or https://github.com/AprilRobotics/apriltag/wiki/AprilTag-User-Guide#pose-estimation for details.
+# - Ellipsis (...) signifies that the previous element can be repeated multiple times.
+#
+# ## Standalone tag definitions
+# ### Remarks
+#
+# - name is optional
+#
+# ### Syntax
+#
+# standalone_tags:
+#   [
+#     {id: ID, size: SIZE, name: NAME},
+#     ...
+#   ]
+#standalone_tags:
+#  [  
+#  ]
+# ## Tag bundle definitions
+# ### Remarks
+#
+# - name is optional
+# - x, y, z have default values of 0 thus they are optional
+# - qw has default value of 1 and qx, qy, qz have default values of 0 thus they are optional
+#
+# ### Syntax
+#
+# tag_bundles:
+#   [
+#     {
+#       name: 'CUSTOM_BUNDLE_NAME',
+#       layout:
+#         [
+#           {id: ID, size: SIZE, x: X_POS, y: Y_POS, z: Z_POS, qw: QUAT_W_VAL, qx: QUAT_X_VAL, qy: QUAT_Y_VAL, qz: QUAT_Z_VAL},
+#           ...
+#         ]
+#     },
+#     ...
+#   ]
+#tag_bundles:
+#  [
+#  ]
+  
+
+apriltag_ros_single_image_server:
+  ros__parameters:
+    standalone_tags:
+      tag1:
+        id: 1
+        size: 20.0
+      tag2:
+        id: 2
+        size: 22.0
+        name: Name2
+        extra: 65
+    tag_bundles:
+      bundle1:
+        name: "CUSTOM_BUNDLE_NAME"
+        layout:
+          tag1:
+            id: 1
+            size: 25.0
+            x: 30.0
+            y: 31.0
+            z: 32.0
+            qw: 1
+            qx: 0
+            qy: 0
+            qz: 0
+          tag2:
+            id: 2
+            size: 26.0
+            x: 33.0
+            y: 34.0
+            z: 35.0
+            qw: 2
+            qx: 0
+            qy: 0
+            qz: 0
+      bundle2:
+        name: "CUSTOM_BUNDLE_NAME2"
+        layout:
+          tag2:
+            id: 3
+            size: 27.0
+            x: 36.0
+            y: 37.0
+            z: 38.0
+            qw: 3
+            qx: 0
+            qy: 0
+            qz: 0
+ 
+apriltag_ros_single_image_client:
+  ros__parameters:
+    standalone_tags:
+      tag1:
+        id: 1
+        size: 20.0
+      tag2:
+        id: 2
+        size: 22.0
+        name: Name2
+        extra: 65
