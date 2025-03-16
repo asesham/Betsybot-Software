@@ -71,10 +71,10 @@ install(TARGETS
 )
 
 # Install headers
-install(
-  DIRECTORY include/
-  DESTINATION include
-)
+#install(
+#  DIRECTORY include/
+#  DESTINATION include
+#)
 
 # Install launch files
 install(DIRECTORY 
@@ -88,7 +88,7 @@ install(DIRECTORY
 )
 
 # Ament exports
-ament_export_include_directories(include)
+#ament_export_include_directories(include)
 ament_export_libraries(${PROJECT_NAME})
 ament_export_dependencies(${dependencies})
 

@@ -53,12 +53,12 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 #    NAMESPACE apriltag_msgs::
 #    DESTINATION ${config_install_dir})
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION include/${PROJECT_NAME}
-)
+#install(DIRECTORY include/${PROJECT_NAME}/
+#  DESTINATION include/${PROJECT_NAME}
+#)
 
 ament_export_dependencies(rosidl_default_runtime)
-ament_export_include_directories(include)
+#ament_export_include_directories(include)
 #ament_export_targets(${PROJECT_NAME})
 
 ament_package()
