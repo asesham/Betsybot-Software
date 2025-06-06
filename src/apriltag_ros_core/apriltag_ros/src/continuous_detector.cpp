@@ -28,7 +28,7 @@
  * policies, either expressed or implied, of the California Institute of
  * Technology.
  */
-
+#include "rclcpp/rclcpp.hpp"
 #include "apriltag_ros/continuous_detector.h"
 
 namespace apriltag_ros
@@ -51,7 +51,7 @@ ContinuousDetector::ContinuousDetector(const rclcpp::NodeOptions & options)
   tag_detector_->get_parameter_or<uint32_t>("queue_size", queue_size, 1);
   const std::string img_str = "image_rect";
   camera_image_subscriber_ =
-      it_->subscribeCamera("image_rect", queue_size,
+      it_->subscribeCamera("/camera/camera/color/image_raw", queue_size,
                           &ContinuousDetector::imageCallback, this,
                           &hints); // TODO
                           
@@ -98,7 +98,7 @@ void ContinuousDetector::imageCallback (
       tag_detections_image_publisher_.getNumSubscribers() == 0 &&
       !tag_detector_->get_publish_tf())
   {
-    // ROS_INFO_STREAM("No subscribers and no tf publishing, skip processing.");
+    //RCLCPP_INFO_STREAM(this->get_logger(), "No subscribers and no tf publishing, skip processing.");
     return;
   }
 

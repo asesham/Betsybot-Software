@@ -58,17 +58,13 @@ bool getRosParameter (rclcpp::Node* node_ptr, const std::string name, double& pa
 
 int main(int argc, char **argv)
 {
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 1");
   rclcpp::init(argc, argv);
   
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 2");
   std::shared_ptr<rclcpp::Node> node = rclcpp::Node::make_shared("apriltag_ros_single_image_client");
   
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 3");
   rclcpp::Client<apriltag_msgs::srv::AnalyzeSingleImage>::SharedPtr client =
     node->create_client<apriltag_msgs::srv::AnalyzeSingleImage>("single_image_tag_detection");
 
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 4");
   auto request = std::make_shared<apriltag_msgs::srv::AnalyzeSingleImage::Request>();
   request->full_path_where_to_get_image =
       apriltag_ros::getAprilTagOption<std::string>(
@@ -85,7 +81,6 @@ int main(int argc, char **argv)
     return 1;
   }
 
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 5");
   // Replicate sensors_msgs/CameraInfo message (must be up-to-date with the
   // analyzed image!)  
   request->camera_info.distortion_model = "plumb_bob";
@@ -115,7 +110,6 @@ int main(int argc, char **argv)
   request->camera_info.p[6] = cy;
   request->camera_info.p[10] = 1.0;
 
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 6");
 
   while (!client->wait_for_service(1s)) {
     if (!rclcpp::ok()) {
@@ -124,7 +118,6 @@ int main(int argc, char **argv)
     }
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "service not available, waiting again...");
   }
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 7");
   
   // Call the service (detect tags in the image specified by the
   // image_load_path)
@@ -144,7 +137,6 @@ int main(int argc, char **argv)
     RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Failed to call service single_image_tag_detection");
     return 1;
   }
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Enti Sanganthi 8");
   
   return 0; // happy ending
 }
