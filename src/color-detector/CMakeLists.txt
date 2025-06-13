@@ -12,6 +12,7 @@ find_package(cv_bridge REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(image_transport REQUIRED)
+find_package(realsense2_camera_msgs REQUIRED)
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -29,6 +30,7 @@ set(dependencies
   cv_bridge
   sensor_msgs
   image_transport
+  realsense2_camera_msgs
 )
 ament_target_dependencies(color-detector ${dependencies})
 
