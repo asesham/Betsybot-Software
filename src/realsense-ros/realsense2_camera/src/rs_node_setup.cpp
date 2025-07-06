@@ -287,11 +287,13 @@ void BaseRealSenseNode::startPublishers(const std::vector<stream_profile>& profi
                 _is_accel_enabled = true;
             else if (profile.stream_type() == RS2_STREAM_GYRO)
                 _is_gyro_enabled = true;
-
+                
+            rmw_qos_profile_t sample_qos = sensor.getQOS(sip);
+            sample_qos.reliability = RMW_QOS_POLICY_RELIABILITY_RELIABLE;
             std::stringstream data_topic_name, info_topic_name;
             data_topic_name << "~/" << stream_name << "/sample";
             _imu_publishers[sip] = _node.create_publisher<sensor_msgs::msg::Imu>(data_topic_name.str(),
-                rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
+                rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(sample_qos), sample_qos));
             // Publish Intrinsics:
             info_topic_name << "~/" << stream_name << "/imu_info";
             _imu_info_publishers[sip] = _node.create_publisher<IMUInfo>(info_topic_name.str(),
