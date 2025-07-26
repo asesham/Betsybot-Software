@@ -4,6 +4,8 @@
 #include "sensor_msgs/msg/imu.hpp" //For Imu sensor message
 #include "std_msgs/msg/float64.hpp"
 #include "geometry_msgs/msg/vector3.hpp" // For Imu angular Velocity Storage
+#include "geometry_msgs/msg/quaternion.hpp" // For Imu angular Velocity Storage
+#include "geometry_msgs/msg/twist.hpp" // For Imu angular Velocity Storage
 #include <deque> // For deque
 #include <cmath> // For abs() with floating-point numbers
 #include <cstdlib> // // For abs() with integer numbers
@@ -32,12 +34,19 @@ class SensorFusion : public rclcpp::Node
     SensorFusion() : Node("sensor_fusion"), count_(0), prev_yaw_angle(0.0), calibration_done(false), cal_avg_yaw(0.0), cal_yaw_sum(0.0)
     {
         this->declare_parameter("window_size", 50);
+        this->declare_parameter("yaw", 0.0);
+        this->declare_parameter("lin_vel", 0.0);
+        this->declare_parameter("ang_vel", 0.0);
         
         rmw_qos_profile_t qos = rmw_qos_profile_default;
         imu_subscription_ = this->create_subscription<sensor_msgs::msg::Imu>(
         "/camera/camera/gyro/sample", 5, std::bind(&SensorFusion::imu_sub_callback, this, std::placeholders::_1));
         
-        imu_filtered_publisher_ = this->create_publisher<geometry_msgs::msg::Vector3>("/sensor/imu_filtered", \ 
+        //imu_filtered_publisher_ = this->create_publisher<geometry_msgs::msg::Vector3>("/sensor/imu_filtered", \ 
+        //                                                rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
+        imu_filtered_publisher_ = this->create_publisher<geometry_msgs::msg::Quaternion>("/sensor_fusion/yaw", \ 
+                                                        rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
+        cmd_vel_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/motion_planning/cmd_vel", \ 
                                                         rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
                                                         
         timer_ = this->create_wall_timer(10ms, std::bind(&SensorFusion::imu_pub_callback, this));
@@ -119,17 +128,38 @@ class SensorFusion : public rclcpp::Node
     
     void imu_pub_callback()
     {
+        yaw_parameter = static_cast<float>(this->get_parameter("yaw").as_double());
+        lin_vel = static_cast<float>(this->get_parameter("lin_vel").as_double());
+        ang_vel = static_cast<float>(this->get_parameter("ang_vel").as_double());
         //RCLCPP_INFO(this->get_logger(), "Publishing: %f, %f, %f, %d", imu_filtered_data.x, imu_filtered_data.y, imu_filtered_data.z, imu_data.size());
-        imu_filtered_publisher_->publish(angles);
+        geometry_msgs::msg::Quaternion angles_test;
+        angles_test.x = 0.0;
+        angles_test.y = yaw_parameter;
+        angles_test.z = 0.0;
+        angles_test.w = 0.0;
+        imu_filtered_publisher_->publish(angles_test);
+        
+        geometry_msgs::msg::Twist command;
+        command.linear.x = lin_vel;
+        command.linear.y = 0.0;
+        command.linear.z = 0.0;
+        command.angular.x = 0.0;
+        command.angular.y = 0.0;
+        command.angular.z = ang_vel;
+        cmd_vel_publisher_->publish(command);
+        
     }
     
     rclcpp::TimerBase::SharedPtr timer_;
-    rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr imu_filtered_publisher_;
+    //rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr imu_filtered_publisher_;
+    rclcpp::Publisher<geometry_msgs::msg::Quaternion>::SharedPtr imu_filtered_publisher_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_publisher_;
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_subscription_;
     std::deque<geometry_msgs::msg::Vector3> imu_data;
     geometry_msgs::msg::Vector3 imu_filtered_data;
     float imu_filtered_data_prev_y_;
     geometry_msgs::msg::Vector3 angles;
+    geometry_msgs::msg::Quaternion angles_test;
     geometry_msgs::msg::Vector3 angle_degrees;
     double prev_yaw_angle;
     geometry_msgs::msg::Vector3 sum_;
@@ -141,6 +171,9 @@ class SensorFusion : public rclcpp::Node
     uint16_t cal_count;
     float cal_avg_yaw;
     float cal_yaw_sum;
+    float yaw_parameter;
+    float lin_vel;
+    float ang_vel;
 };
 
 
