@@ -1,183 +1,152 @@
-#include <cstdio>
+#include <chrono>
+#include "color-detector/color-detector.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "sensor_msgs/msg/image.hpp"
-#include "sensor_msgs/msg/camera_info.hpp"
-#include "realsense2_camera_msgs/msg/rgbd.hpp"
 #include "cv_bridge/cv_bridge.h"
-#include "opencv2/highgui/highgui.hpp"
-#include <image_transport/image_transport.hpp>
-#include <sensor_msgs/image_encodings.hpp>
-using namespace cv;
-using ImageConstPtr = sensor_msgs::msg::Image::ConstSharedPtr;
-using CameraInfoConstPtr = sensor_msgs::msg::CameraInfo::ConstSharedPtr;
 
-int red_lower_range[3] = {180, 0, 0};
-int red_upper_range[3] = {255, 50, 50};
-int green_lower_range[3] = {170, 0, 0};
-int green_upper_range[3] = {255, 100, 100};
+using namespace std::chrono_literals;
 
-int red_bottom_mean;
-int red_sensitivity;
-int red_top_mean;
-int green_mean;
-int green_sensitivity;
-
-class ColorDetector : public rclcpp::Node
+ColorDetector::ColorDetector() : Node("color_detector")
 {
-public:
-    ColorDetector() : Node("color_detector")
-    {
-    /*
-      it_ = std::shared_ptr<image_transport::ImageTransport>(
-            new image_transport::ImageTransport(std::shared_ptr<rclcpp::Node>(this)));
-  
-      const image_transport::TransportHints hints(this, "raw", "");
-      camera_image_subscriber_ =
-          it_->subscribeCamera("/camera/camera/rgbd", 1,
-                               &ColorDetector::topic_callback, this,
-                               &hints); // TODO
-    */
-        rgbd_subscriber_ = this->create_subscription<realsense2_camera_msgs::msg::RGBD>
-        ("/camera/camera/rgbd", 10, std::bind(&ColorDetector::rgbd_callback, this, std::placeholders::_1));
-        //cam_info_subscriber_ = this->create_subscription<sensor_msgs::msg::Image>
-        //("/camera/camera/color/camera_info", 10, std::bind(&ColorDetector::topic_callback, this, std::placeholders::_1));
-        this->declare_parameter("red_bottom_mean", 5);
-        this->declare_parameter("red_sensitivity", 5);
-        this->declare_parameter("red_top_mean", 175);
-        this->declare_parameter("green_mean", 60);
-        this->declare_parameter("green_sensitivity", 10);
-        //cv::namedWindow("view");
-    }
-private:
-
-    void topic_callback (const ImageConstPtr& image_rect,
-                         const CameraInfoConstPtr& camera_info)
-    //void topic_callback(const sensor_msgs::msg::Image::SharedPtr msg) const
-    {
-        try{
-            //Mat image = cv_bridge::toCvShare(image_rect, "bgr8")->image;
-            Mat image = cv_bridge::toCvShare(image_rect, sensor_msgs::image_encodings::TYPE_16UC1)->image;
-            Mat hsv_image, red_mask1, red_mask2, red_mask, green_mask;
-
-            cv::Mat depth_image(image.size(), CV_8UC1); // Assuming 8-bit depth
-            cv::Mat bgr_image(image.size(), CV_8UC3); // 8-bit BGR
-            
-
-            for (int row = 0; row < image.rows; ++row) {
-                for (int col = 0; col < image.cols; ++col) {
-                    unsigned short combined_value = image.at<unsigned short>(row, col);
-                    unsigned short depth_value = (combined_value >> 8);
-                    unsigned char bgr_value = (combined_value & 0xFF);
-
-                    depth_image.at<unsigned char>(row,col) = static_cast<unsigned char>(depth_value);
-
-                    bgr_image.at<cv::Vec3b>(row, col) = cv::Vec3b(
-                        (bgr_value & 0x07),
-                        (bgr_value & 0x38) >> 3,
-                        (bgr_value & 0xC0) >> 6
-                        );
-                }
-            }
-
-            cv::imshow("Depth Image", depth_image);
-            cv::imshow("BGR Image", bgr_image);
-            cv::waitKey(1);
-            //cvtColor(image, hsv_image, COLOR_BGR2HSV);
-
-            //Scalar red_lower_bound = Scalar(0, 70, 50);
-            //Scalar red_upper_bound = Scalar(10, 255, 255);
-            
-            //Scalar green_lower_bound = Scalar(0, 70, 50);
-            //Scalar green_upper_bound = Scalar(10, 255, 255);
-            
-            //red_bottom_mean = this->get_parameter("red_bottom_mean").as_int();
-            //red_sensitivity = this->get_parameter("red_sensitivity").as_int();
-            //red_top_mean = this->get_parameter("red_top_mean").as_int();
-            //green_mean = this->get_parameter("green_mean").as_int();
-            //green_sensitivity = this->get_parameter("green_sensitivity").as_int();
-
-            //inRange(hsv_image, Scalar(red_bottom_mean - red_sensitivity, 70, 50), \
-                               Scalar(red_bottom_mean + red_sensitivity, 255, 255), red_mask1);
-            //inRange(hsv_image, Scalar(red_top_mean - red_sensitivity, 70, 50), \
-                               Scalar(red_top_mean + red_sensitivity, 255, 255), red_mask2);
-            
-            //inRange(hsv_image, Scalar(green_mean - green_sensitivity, 100, 100), 
-            //                   Scalar(green_mean + green_sensitivity, 255, 255), green_mask);
-            
-            //red_mask = red_mask1 | red_mask2;
-
-            //imshow("Original Image", image);
-            //imshow("red Mask", red_mask);
-            //imshow("Green Mask", green_mask);
-            
-            //cv::imshow("view", cv_image);
-            //waitKey(1);
-        } catch (cv_bridge::Exception &e){
-            RCLCPP_INFO(this->get_logger(), "I Could not convert from '%s' to 'bgr8'.", image_rect->encoding.c_str());
-        }
-    }
+    rgbd_subscriber_ = this->create_subscription<realsense2_camera_msgs::msg::RGBD>
+     ("/camera/camera/rgbd", 10, std::bind(&ColorDetector::rgbd_callback, this, std::placeholders::_1));
+        
+    this->declare_parameter("green_min_depth", 800);
+    this->declare_parameter("green_max_depth", 1400);
+    this->declare_parameter("green_threshold", 100000);
+    this->declare_parameter("red_min_depth", 800);
+    this->declare_parameter("red_max_depth", 1400);
+    this->declare_parameter("red_threshold", 100000);
     
+    trigger = std_msgs::msg::String();
+    trigger.data = "NONE";
+    color_publisher_ = this->create_publisher<std_msgs::msg::String>("/color_detector/Trigger", 10);
+    timer_ = this->create_wall_timer(
+      10ms, std::bind(&ColorDetector::timer_callback, this));
+}
     
-    void rgbd_callback (const realsense2_camera_msgs::msg::RGBD::SharedPtr rgbd_image)
+void ColorDetector::detectCircles(Mat src)
+{
+	Mat gray;
+	cvtColor(src, gray, COLOR_BGR2GRAY);
+	
+	GaussianBlur(gray, gray, cv::Size(9, 9), 2, 2);
+	imshow("Gray image", gray);
+	std::vector<Vec3f> circles;
+	HoughCircles(gray, circles, HOUGH_GRADIENT, 1,
+             	1,  // change this value to detect circles with different distances to each other
+             	100, 30, 1, 100 // change the last two parameters
+        	// (min_radius & max_radius) to detect larger circles
+	);
+	for( size_t i = 0; i < circles.size(); i++ )
+	{
+    	Vec3i c = circles[i];
+   		Point center = Point(c[0], c[1]);
+    	// circle center
+    	circle( src, center, 1, Scalar(0,100,100), 3, LINE_AA);
+    	// circle outline
+    	int radius = c[2];
+    	circle( src, center, radius, Scalar(255,0,255), 3, LINE_AA);
+	}
+	
+	imshow("detected circles", src);
+}
+
+bool ColorDetector::detect_green(Mat hsv_image, Mat depth_image)
+{
+    // HSV lower bound for green
+	Scalar lower_green = cv::Scalar(GREEN_LOW_H, GREEN_LOW_S, GREEN_LOW_V);
+	// HSV upper bound for green
+	Scalar upper_green = cv::Scalar(GREEN_HIGH_H, GREEN_HIGH_S, GREEN_HIGH_V);
+	        	
+    Mat depth_mask, green_mask;    
+    inRange(hsv_image, lower_green, upper_green, green_mask);
+    
+    green_min_depth = this->get_parameter("green_min_depth").as_int();
+    green_max_depth = this->get_parameter("green_max_depth").as_int();
+    
+    inRange(depth_image, green_min_depth, green_max_depth, depth_mask);
+    
+    green_mask = green_mask & depth_mask;
+    
+    green_threshold = this->get_parameter("green_threshold").as_int();
+    if (cv::sum(green_mask)[0] > green_threshold)
+    	return true;
+    return false;
+}
+
+bool ColorDetector::detect_red(Mat hsv_image, Mat depth_image)
+{
+    Mat lower_red_hue_range;
+	Mat upper_red_hue_range;
+	
+	//Lower Red Hue
+	inRange(hsv_image, cv::Scalar(LOW_RED_LOW_H, 100, 100), \
+	                   cv::Scalar(LOW_RED_HIGH_H, 255, 255), lower_red_hue_range);
+	
+	// Upper red hue
+	inRange(hsv_image, cv::Scalar(HIGH_RED_LOW_H, 100, 100), \
+	                   cv::Scalar(HIGH_RED_HIGH_H, 255, 255), upper_red_hue_range);
+	    	        	
+    Mat depth_mask, red_mask;      
+    
+    // Combine masks
+	addWeighted(lower_red_hue_range, 1.0, upper_red_hue_range, 1.0, 0.0, red_mask);
+    red_min_depth = this->get_parameter("red_min_depth").as_int();
+    red_max_depth = this->get_parameter("red_max_depth").as_int();
+    
+    inRange(depth_image, red_min_depth, red_max_depth, depth_mask);
+    
+    red_mask = red_mask & depth_mask;
+    
+    red_threshold = this->get_parameter("red_threshold").as_int();
+    if (cv::sum(red_mask)[0] > red_threshold)
+    	return true;
+    return false;
+}
+
+void ColorDetector::rgbd_callback (const realsense2_camera_msgs::msg::RGBD::SharedPtr rgbd_image)
+{
+    try
     {
-        try
-        {
-            sensor_msgs::msg::Image::SharedPtr rgb_image = std::make_shared<sensor_msgs::msg::Image>(rgbd_image->rgb);
-            sensor_msgs::msg::Image::SharedPtr depth_image = std::make_shared<sensor_msgs::msg::Image>(rgbd_image->depth);
-            
-            Mat rgb = cv_bridge::toCvShare(rgb_image, "bgr8")->image;
-            Mat depth = cv_bridge::toCvShare(depth_image, sensor_msgs::image_encodings::TYPE_16UC1)->image;
-            Mat hsv_image, red_mask1, red_mask2, red_mask, green_mask, depth_mask;
-            
-            cvtColor(rgb, hsv_image, COLOR_BGR2HSV);
+        sensor_msgs::msg::Image::SharedPtr rgb_image = std::make_shared<sensor_msgs::msg::Image>(rgbd_image->rgb);
+        sensor_msgs::msg::Image::SharedPtr depth_image = std::make_shared<sensor_msgs::msg::Image>(rgbd_image->depth);
+        
+        Mat rgb = cv_bridge::toCvShare(rgb_image, "bgr8")->image;
+        Mat depth = cv_bridge::toCvShare(depth_image, sensor_msgs::image_encodings::TYPE_16UC1)->image;
+        Mat hsv_image, red_mask1, red_mask2, red_mask, green_mask, depth_mask, gray_mask;
+        
+        Mat sub_rgb(rgb, Range(1, 360), Range(640, 1279));
+        Mat sub_depth(depth, Range(1, 360), Range(640, 1279));
+                  
+        cvtColor(sub_rgb, hsv_image, COLOR_BGR2HSV);
+        
+        bool green = detect_green(hsv_image, sub_depth);
+        bool red = detect_red(hsv_image, sub_depth);
+        
+        if (red)
+        	trigger.data = "RED";
+        else if (green)
+        	trigger.data = "GREEN";
+        else
+        	trigger.data = "NONE";
 
-            Scalar red_lower_bound = Scalar(0, 70, 50);
-            Scalar red_upper_bound = Scalar(10, 255, 255);
-            
-            Scalar green_lower_bound = Scalar(0, 70, 50);
-            Scalar green_upper_bound = Scalar(10, 255, 255);
-            
-            red_bottom_mean = this->get_parameter("red_bottom_mean").as_int();
-            red_sensitivity = this->get_parameter("red_sensitivity").as_int();
-            red_top_mean = this->get_parameter("red_top_mean").as_int();
-            green_mean = this->get_parameter("green_mean").as_int();
-            green_sensitivity = this->get_parameter("green_sensitivity").as_int();
-
-            inRange(hsv_image, Scalar(red_bottom_mean - red_sensitivity, 70, 50), \
-                               Scalar(red_bottom_mean + red_sensitivity, 255, 255), red_mask1);
-            inRange(hsv_image, Scalar(red_top_mean - red_sensitivity, 70, 50), \
-                               Scalar(red_top_mean + red_sensitivity, 255, 255), red_mask2);
-            
-            inRange(hsv_image, Scalar(green_mean - green_sensitivity, 100, 100), \
-                               Scalar(green_mean + green_sensitivity, 255, 255), green_mask);
-            
-            inRange(depth, 200, 300, depth_mask);
-            red_mask = (red_mask1 | red_mask2) & depth_mask;
-            green_mask = green_mask & depth_mask;
-            //imshow("Original Image", image);
-            imshow("red Mask", red_mask);
-            imshow("Green Mask", green_mask);
-            
-            //cv::imshow("view", cv_image);
-            cv::imshow("RGB Image", rgb);
-            cv::imshow("Depth Image", depth_mask);
-            cv::waitKey(1);
-        }catch (cv_bridge::Exception &e){
-            RCLCPP_INFO(this->get_logger(), "I Could not convert from '%s' to 'bgr8'.", rgbd_image->depth.encoding.c_str());
-        }
+        cv::waitKey(1);
     }
-    rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr image_subscriber_;
-    rclcpp::Subscription<realsense2_camera_msgs::msg::RGBD>::SharedPtr rgbd_subscriber_;
-    rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr cam_info_subscriber_;
-    std::shared_ptr<image_transport::ImageTransport> it_;
-    image_transport::CameraSubscriber camera_image_subscriber_;
-};
+    catch (cv_bridge::Exception &e){
+        RCLCPP_INFO(this->get_logger(), "I Could not convert from '%s' to 'bgr8'.", rgbd_image->depth.encoding.c_str());
+    }
+}
+
+void ColorDetector::timer_callback()
+{
+    color_publisher_->publish(trigger);
+} 
 
 int main(int argc, char ** argv)
 {
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<ColorDetector>());
     rclcpp::shutdown();
-    //cv::destroyWindow("view");
-  return 0;
+    return 0;
 }
+

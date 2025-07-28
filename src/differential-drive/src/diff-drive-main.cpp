@@ -129,10 +129,10 @@ private:
             right_speed = min_motor_limit; 
 #if ENABLE_MOTORS
         // Set Motor Speeds
-        leftOut.Output = 0.04; //left_speed;
-        rightOut.Output = -0.04; //right_speed;
-        //leftMotor.SetControl(leftOut);
-        //rightMotor.SetControl(rightOut);
+        leftOut.Output = 0.7; //left_speed;
+        rightOut.Output = 0.7; //right_speed;
+        leftMotor.SetControl(leftOut);
+        rightMotor.SetControl(rightOut);
 #endif
     }
     
