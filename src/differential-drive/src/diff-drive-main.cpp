@@ -56,7 +56,11 @@ public:
         // PID settings
         
         // Yaw angle PID setting     
-        yaw_pid = new PID(1.0, 0.0, 0.0);
+        yaw_pid = new PID(0.006, 0.001, 0.0);
+        this->declare_parameter("kp", 0.006);
+        this->declare_parameter("ki", 0.001);
+        this->declare_parameter("kd", 0.0);
+	this->declare_parameter("vel", 0.03);
 #if ENABLE_MOTORS
         // Motor Config settings
         configs::TalonFXConfiguration fx_cfg{};
@@ -70,8 +74,8 @@ public:
         rightMotor.GetConfigurator().Apply(fx_cfg);
 #endif
         // Motor speed limits
-        max_motor_limit = 0.9;
-        min_motor_limit = -0.9;
+        max_motor_limit = 0.7;
+        min_motor_limit = -0.7;
         
         // Set Workspace Variables
         drive_straight = false;
@@ -79,9 +83,10 @@ public:
         
         // Subscribers -> Yaw angle, Imu, command velocity
         //   Service -> red/green signal from camera
-        yaw_subscription_ = this->create_subscription<geometry_msgs::msg::Quaternion>(
+        yaw_subscription_ = this->create_subscription<geometry_msgs::msg::Quaternion>( \
         "/sensor_fusion/yaw", 5, std::bind(&DifferentialDrive::yaw_angle_callback, this, std::placeholders::_1));
-        
+        //yaw_subscription_ = this->create_subscription<std_msgs::msg::Float64>( \
+        "/yaw", 5, std::bind(&DifferentialDrive::yaw_angle_callback, this, std::placeholders::_1));
         cmd_vel_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
         "/motion_planning/cmd_vel", 5, std::bind(&DifferentialDrive::cmd_vel_callback, this, std::placeholders::_1));
 
@@ -105,7 +110,14 @@ private:
     void yaw_angle_callback(geometry_msgs::msg::Quaternion::SharedPtr data)
     {
         yaw_angle = data->y;
+        RCLCPP_INFO(this->get_logger(), "Yaw Angle set from subscription= %f", yaw_angle);
     }
+    
+    //void yaw_angle_callback(std_msgs::msg::Float64::SharedPtr data)
+    //{
+    //    yaw_angle = (float)data->data;
+    //    RCLCPP_INFO(this->get_logger(), "Yaw Angle set from subscription= %f", yaw_angle);
+    //}
     
     void cmd_vel_callback(geometry_msgs::msg::Twist::SharedPtr cmd)
     {
@@ -129,8 +141,8 @@ private:
             right_speed = min_motor_limit; 
 #if ENABLE_MOTORS
         // Set Motor Speeds
-        leftOut.Output = 0.7; //left_speed;
-        rightOut.Output = 0.7; //right_speed;
+        leftOut.Output = cmd_vel + left_speed; //left_speed;
+        rightOut.Output = cmd_vel + right_speed; //right_speed;
         leftMotor.SetControl(leftOut);
         rightMotor.SetControl(rightOut);
 #endif
@@ -139,6 +151,11 @@ private:
     void drive()
     {
         ctre::phoenix::unmanaged::FeedEnable(100);
+        
+        yaw_pid->setKP(this->get_parameter("kp").as_double());
+        yaw_pid->setKI(this->get_parameter("ki").as_double());
+        yaw_pid->setKD(this->get_parameter("kd").as_double());
+        cmd_vel = this->get_parameter("vel").as_double();
         if (abs(ang_vel) < 0.0001)
         {
             // Wait for 25 counts or 250ms to get the stable yaw angle 
@@ -174,6 +191,7 @@ private:
     
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr imu_filtered_publisher_;
+    //rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr yaw_subscription_;
     rclcpp::Subscription<geometry_msgs::msg::Quaternion>::SharedPtr yaw_subscription_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_subscription_;
     
@@ -183,7 +201,8 @@ private:
     float lin_vel;
     float ang_vel;
     float yaw_angle;
-    
+    double cmd_vel;
+
     PID* yaw_pid;
     float desired_yaw;
     bool drive_straight;

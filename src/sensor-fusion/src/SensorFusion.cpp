@@ -14,7 +14,7 @@
 using namespace std::chrono_literals;
 
 //#define M_PI 3.141592653589793
-uint16_t cal_window_size = 5000;
+uint16_t cal_window_size = 1000;
 
 double convert_radians_to_180_degrees(double rad) {
     double deg = rad * (180.0 / M_PI);
@@ -46,7 +46,7 @@ class SensorFusion : public rclcpp::Node
         //                                                rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
         imu_filtered_publisher_ = this->create_publisher<geometry_msgs::msg::Quaternion>("/sensor_fusion/yaw", \ 
                                                         rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
-        cmd_vel_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/motion_planning/cmd_vel", \ 
+        //cmd_vel_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/motion_planning/cmd_vel", \
                                                         rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
                                                         
         timer_ = this->create_wall_timer(10ms, std::bind(&SensorFusion::imu_pub_callback, this));
@@ -128,32 +128,32 @@ class SensorFusion : public rclcpp::Node
     
     void imu_pub_callback()
     {
-        yaw_parameter = static_cast<float>(this->get_parameter("yaw").as_double());
-        lin_vel = static_cast<float>(this->get_parameter("lin_vel").as_double());
-        ang_vel = static_cast<float>(this->get_parameter("ang_vel").as_double());
+        //yaw_parameter = static_cast<float>(this->get_parameter("yaw").as_double());
+        //lin_vel = static_cast<float>(this->get_parameter("lin_vel").as_double());
+        //ang_vel = static_cast<float>(this->get_parameter("ang_vel").as_double());
         //RCLCPP_INFO(this->get_logger(), "Publishing: %f, %f, %f, %d", imu_filtered_data.x, imu_filtered_data.y, imu_filtered_data.z, imu_data.size());
         geometry_msgs::msg::Quaternion angles_test;
         angles_test.x = 0.0;
-        angles_test.y = yaw_parameter;
+        angles_test.y = angle_degrees.y;
         angles_test.z = 0.0;
         angles_test.w = 0.0;
         imu_filtered_publisher_->publish(angles_test);
         
-        geometry_msgs::msg::Twist command;
-        command.linear.x = lin_vel;
-        command.linear.y = 0.0;
-        command.linear.z = 0.0;
-        command.angular.x = 0.0;
-        command.angular.y = 0.0;
-        command.angular.z = ang_vel;
-        cmd_vel_publisher_->publish(command);
+        //geometry_msgs::msg::Twist command;
+        //command.linear.x = lin_vel;
+        //command.linear.y = 0.0;
+        //command.linear.z = 0.0;
+        //command.angular.x = 0.0;
+        //command.angular.y = 0.0;
+        //command.angular.z = ang_vel;
+        //cmd_vel_publisher_->publish(command);
         
     }
     
     rclcpp::TimerBase::SharedPtr timer_;
     //rclcpp::Publisher<geometry_msgs::msg::Vector3>::SharedPtr imu_filtered_publisher_;
     rclcpp::Publisher<geometry_msgs::msg::Quaternion>::SharedPtr imu_filtered_publisher_;
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_publisher_;
+    //rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_publisher_;
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr imu_subscription_;
     std::deque<geometry_msgs::msg::Vector3> imu_data;
     geometry_msgs::msg::Vector3 imu_filtered_data;
