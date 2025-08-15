@@ -10,12 +10,12 @@ ColorDetector::ColorDetector() : Node("color_detector")
     rgbd_subscriber_ = this->create_subscription<realsense2_camera_msgs::msg::RGBD>
      ("/camera/camera/rgbd", 10, std::bind(&ColorDetector::rgbd_callback, this, std::placeholders::_1));
         
-    this->declare_parameter("green_min_depth", 800);
+    this->declare_parameter("green_min_depth", 0);
     this->declare_parameter("green_max_depth", 1400);
-    this->declare_parameter("green_threshold", 100000);
-    this->declare_parameter("red_min_depth", 800);
-    this->declare_parameter("red_max_depth", 1400);
-    this->declare_parameter("red_threshold", 100000);
+    this->declare_parameter("green_threshold", 1000000);
+    this->declare_parameter("red_min_depth", 0);
+    this->declare_parameter("red_max_depth", 2000);
+    this->declare_parameter("red_threshold", 1000000);
     
     trigger = std_msgs::msg::String();
     trigger.data = "NONE";
@@ -68,6 +68,7 @@ bool ColorDetector::detect_green(Mat hsv_image, Mat depth_image)
     
     green_mask = green_mask & depth_mask;
     
+    imshow("green mask", green_mask);
     green_threshold = this->get_parameter("green_threshold").as_int();
     if (cv::sum(green_mask)[0] > green_threshold)
     	return true;
@@ -80,11 +81,11 @@ bool ColorDetector::detect_red(Mat hsv_image, Mat depth_image)
 	Mat upper_red_hue_range;
 	
 	//Lower Red Hue
-	inRange(hsv_image, cv::Scalar(LOW_RED_LOW_H, 100, 100), \
+	inRange(hsv_image, cv::Scalar(LOW_RED_LOW_H, 85, 75), \
 	                   cv::Scalar(LOW_RED_HIGH_H, 255, 255), lower_red_hue_range);
 	
 	// Upper red hue
-	inRange(hsv_image, cv::Scalar(HIGH_RED_LOW_H, 100, 100), \
+	inRange(hsv_image, cv::Scalar(HIGH_RED_LOW_H, 85, 75), \
 	                   cv::Scalar(HIGH_RED_HIGH_H, 255, 255), upper_red_hue_range);
 	    	        	
     Mat depth_mask, red_mask;      
@@ -98,6 +99,7 @@ bool ColorDetector::detect_red(Mat hsv_image, Mat depth_image)
     
     red_mask = red_mask & depth_mask;
     
+    imshow("red mask", red_mask);
     red_threshold = this->get_parameter("red_threshold").as_int();
     if (cv::sum(red_mask)[0] > red_threshold)
     	return true;

@@ -27,7 +27,7 @@ using CameraInfoConstPtr = sensor_msgs::msg::CameraInfo::ConstSharedPtr;
 #define LOW_RED_LOW_H   0
 #define LOW_RED_HIGH_H  10
 #define HIGH_RED_LOW_H  160
-#define HIGH_RED_HIGH_H 179
+#define HIGH_RED_HIGH_H 180
 
 class ColorDetector : public rclcpp::Node
 {

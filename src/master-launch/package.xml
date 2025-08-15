@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>master_launch</name>
+  <version>0.0.1</version>
+  <description>Master launch package to start multiple nodes</description>
+
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build tool dependency -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+</package>

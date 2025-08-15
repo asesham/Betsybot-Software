@@ -19,8 +19,7 @@ public:
         std::chrono::duration<double> dt_duration = cur_time - prev_time;
         double dt = dt_duration.count();
         //RCLCPP_INFO(logger, "dt = %f", dt);
-        std::cout << "dt = " << dt << std::endl;
-        
+	
         //rclcpp::Time cur_time = system_clock.now();
         //rclcpp::Duration dt_duration = cur_time - prev_time;
         //double dt = dt_duration.seconds();
@@ -28,8 +27,7 @@ public:
         prev_time = cur_time;
         
         integral_term += ki * err * dt;
-        
-        std::cout << "integral_term = " << integral_term << std::endl;
+       
         //RCLCPP_INFO(logger, "integral_term = %f", integral_term);
         /*
         if (integral_term > integral_limit )
@@ -40,10 +38,9 @@ public:
         
         double err_out = kp * err + integral_term + kd * (err - prev_err) * dt;
         
-        std::cout << "kp = " << kp << ", ki = " << ki << ", kd = " << kd << std::endl;
-        std::cout << "kp = " << kp << ", err = " << err << std::endl;
-        std::cout << "kd = " << kd << ", err = " << err << ", prev_err = " << prev_err << ", dt = " << dt << std::endl;
-        std::cout << "err_out = " << err_out << std::endl;
+        //std::cout << "kp = " << kp << ", err = " << err \
+	        << ", ki = " << ki << "integral_term =  " << integral_term \
+	       	<< ", kd = " << kd << "err diff = " << (err - prev_err) << std::endl;
         //RCLCPP_INFO(logger, "kd = %f, err = %f, prev_err = %f, dt = %f", kp, err, prev_err, dt);
         //RCLCPP_INFO(logger, "err_out = %f", err_out);
         prev_err = err;

@@ -8,9 +8,10 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
 
 add_executable(minimal_param_node src/cpp_parameters_node.cpp)
-ament_target_dependencies(minimal_param_node rclcpp)
+ament_target_dependencies(minimal_param_node rclcpp std_msgs)
 
 install(TARGETS
     minimal_param_node

@@ -74,11 +74,12 @@ class SensorFusion : public rclcpp::Node
             else
             {
                 cal_count++;
-                cal_yaw_sum += data->angular_velocity.y;
+                RCLCPP_INFO(this->get_logger(), "Cal Not Done.... cal count = %d", cal_count);
+		cal_yaw_sum += data->angular_velocity.y;
                 return;
             }
         }
-        //RCLCPP_INFO(this->get_logger(), "Calibration Done!!! cal_avg_yaw = %f cal_yaw_sum = %f", cal_avg_yaw, cal_yaw_sum);
+        RCLCPP_INFO(this->get_logger(), "Calibration Done!!! cal_avg_yaw = %f cal_yaw_sum = %f", cal_avg_yaw, cal_yaw_sum);
         sum_.x += data->angular_velocity.x;
         sum_.y += data->angular_velocity.y;
         sum_.z += data->angular_velocity.z;
@@ -134,7 +135,7 @@ class SensorFusion : public rclcpp::Node
         //RCLCPP_INFO(this->get_logger(), "Publishing: %f, %f, %f, %d", imu_filtered_data.x, imu_filtered_data.y, imu_filtered_data.z, imu_data.size());
         geometry_msgs::msg::Quaternion angles_test;
         angles_test.x = 0.0;
-        angles_test.y = angle_degrees.y;
+        angles_test.y = angles.y;
         angles_test.z = 0.0;
         angles_test.w = 0.0;
         imu_filtered_publisher_->publish(angles_test);

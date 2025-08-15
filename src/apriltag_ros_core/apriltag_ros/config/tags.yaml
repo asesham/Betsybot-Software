@@ -48,7 +48,8 @@
 #  ]
   
 
-apriltag_ros_single_image_server:
+#apriltag_ros_single_image_server:
+ContinuousDetector:
   ros__parameters:
     standalone_tags:
       tag1:
