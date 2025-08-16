@@ -5,11 +5,11 @@ from launch_ros.actions import Node, PushRosNamespace
 from launch.conditions import IfCondition
 
 def generate_launch_description():
-    namespace = 'Betsybot-Software'
+    namespace = 'Betsybot_Software'
 
     # Launch arguments for conditional node launching
     launch_args = [
-        DeclareLaunchArgument('apriltag', default_value='true', description='Launch apriltag node'),
+      # DeclareLaunchArgument('apriltag', default_value='true', description='Launch apriltag node'),
         DeclareLaunchArgument('apriltag_ros_core', default_value='true', description='Launch apriltag_ros_core node'),
         DeclareLaunchArgument('color_detector', default_value='true', description='Launch color detector node'),
         DeclareLaunchArgument('cpp_parameters', default_value='true', description='Launch cpp_parameters node'),
@@ -23,13 +23,13 @@ def generate_launch_description():
     nodes_group = GroupAction(
         actions=[
             PushRosNamespace(namespace),
-            Node(
-                package='apriltag',
-                executable='apriltag',
-                name='apriltag_node',
-                output='screen',
-                condition=IfCondition(LaunchConfiguration('apriltag'))
-            ),
+           # Node(
+            #    package='apriltag',
+             #   executable='apriltag',
+              #  name='apriltag_node',
+               # output='screen',
+                #condition=IfCondition(LaunchConfiguration('apriltag'))
+           # ),
             Node(
                 package='apriltag_ros',
                 executable='apriltag_ros_continuous_detector_node',
@@ -74,7 +74,7 @@ def generate_launch_description():
             ),
             Node(
                 package='sensor-fusion',
-                executable='sensor-fusion',
+                executable='sensor_fusion',
                 name='sensor_fusion_node',
                 output='screen',
                 condition=IfCondition(LaunchConfiguration('sensor_fusion'))

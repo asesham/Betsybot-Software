@@ -68,11 +68,24 @@ public:
 
         // the left motor is CCW+
         fx_cfg.MotorOutput.Inverted = signals::InvertedValue::CounterClockwise_Positive;
-        leftMotor.GetConfigurator().Apply(fx_cfg);
+        
+        // robot init, set slot 0 gains
+        configs::Slot0Configs slot0Configs{};
+        slot0Configs.kV = 0.12;
+        slot0Configs.kP = 0.11;
+        slot0Configs.kI = 0.52;
+        slot0Configs.kD = 0.01;
+        fx_cfg.Slot0 = slot0Configs;
 
+        leftMotor.GetConfigurator().Apply(fx_cfg);
         // the right motor is CW+
         fx_cfg.MotorOutput.Inverted = signals::InvertedValue::Clockwise_Positive;
         rightMotor.GetConfigurator().Apply(fx_cfg);
+        
+        leftMotor.GetConfigurator().Apply(slot0Configs, 50_ms);
+        
+        std::cout << fx_cfg.ToString() << std::endl;
+        //rightMotor.GetConfigurator().Apply(slot0Configs, 50_ms);
 #endif
         // Motor speed limits
         max_motor_limit = 0.7;
@@ -83,7 +96,6 @@ public:
         speed_reduced = false;
         straight_count_ = 0;
         turn_count_ = 0;
-        
         // Subscribers -> Yaw angle, Imu, command velocity
         //   Service -> red/green signal from camera
         yaw_subscription_ = this->create_subscription<geometry_msgs::msg::Quaternion>( \
@@ -93,6 +105,8 @@ public:
         cmd_vel_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
         "/motion_planning/cmd_vel", 5, std::bind(&DifferentialDrive::cmd_vel_callback, this, std::placeholders::_1));
 
+        motor_speed_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/diff_drive/motor_speeds", 10);
+        
         // Periodic Function to Drive
         timer_ = this->create_wall_timer(10ms, std::bind(&DifferentialDrive::drive, this));
     }
@@ -112,20 +126,13 @@ private:
 
     void yaw_angle_callback(geometry_msgs::msg::Quaternion::SharedPtr data)
     {
-        yaw_angle = data->y;
+        yaw_angle = 0.0;//data->y;
         //RCLCPP_INFO(this->get_logger(), "Yaw Angle set from subscription= %f", yaw_angle);
     }
     
-    //void yaw_angle_callback(std_msgs::msg::Float64::SharedPtr data)
-    //{
-    //    yaw_angle = (float)data->data;
-    //    RCLCPP_INFO(this->get_logger(), "Yaw Angle set from subscription= %f", yaw_angle);
-    //}
-    
     void cmd_vel_callback(geometry_msgs::msg::Twist::SharedPtr cmd)
     {
-        cmd_lin_vel = cmd->linear.x/2;
-        RCLCPP_INFO(this->get_logger(), "cmd->linear.x = %f ", cmd->linear.x);
+        cmd_lin_vel = cmd->linear.x;
         cmd_ang_vel = cmd->angular.z;
     }
     
@@ -145,28 +152,55 @@ private:
             right_speed = min_motor_limit; 
 #if ENABLE_MOTORS
         // Set Motor Speeds
-        leftOut.Output = left_speed; //left_speed;
-        rightOut.Output = right_speed; //right_speed;
-        leftMotor.SetControl(leftOut);
-        rightMotor.SetControl(rightOut);
+        // class member variable
+        controls::VelocityVoltage m_velocity{0_tps};
+
+
+        // periodic, run velocity control with slot 0 configs,
+        // target velocity of 50 rps
+        m_velocity.Slot = 0;
+        m_velocity.WithVelocity(5_tps);
+        m_velocity.WithAcceleration(0.2_tr_per_s_sq);
+        //std::cout << m_velocity.ToString() << std::endl;
+        leftMotor.SetControl(m_velocity);
+        //rightMotor.SetControl(m_velocity.WithVelocity(0_tps));
+        
+        //leftOut.Output = 0.05; //left_speed;
+        //rightOut.Output = 0.05; //right_speed;
+        //leftMotor.SetControl(leftOut);
+        //rightMotor.SetControl(rightOut);
 #endif
+        geometry_msgs::msg::Twist msg;
+        msg.linear.x = (float)leftMotor.GetVelocity().GetValueAsDouble();
+        msg.linear.y = (float)rightMotor.GetVelocity().GetValueAsDouble();
+        motor_speed_publisher_->publish(msg);
+        
     }
     
-    void reduceSpeedIfYawErrorIsMore(double yaw_error, float& cmd_speed, float cmd_vel)
+    float reduceSpeedIfYawErrorIsMore(double yaw_error, float cmd_vel)
     {
-        if (yaw_error < 0.174533) cmd_speed = cmd_vel;
+        float reduced_spd = cmd_vel;
+        //if (yaw_error < 0.174533 ) cmd_speed = cmd_vel;
         if (!speed_reduced && yaw_error > 0.174533) // 10 degrees
         {
             if (cmd_vel > 0.1)
             {
-                cmd_speed = 0.1;
+                reduced_spd = 0.1;
                 speed_reduced = true;
             }
         }
         if (speed_reduced)
         {
-            cmd_speed += (cmd_vel - 0.1)/500;
+            reduced_spd += (cmd_vel - 0.1)/500;
         }
+        return reduced_spd;
+    }
+    
+    void cmd_spd_regulator(float& cmd_speed, float cmd_vel, std::string tag)
+    {
+        float inc = (cmd_vel - cmd_speed)/200;
+        cmd_speed += inc;
+        //RCLCPP_INFO(this->get_logger(), "%s: Command Speed = %f, command Velocity = %f", tag.c_str(), cmd_speed, cmd_vel);     
     }
     
     void drive()
@@ -176,8 +210,9 @@ private:
         yaw_pid->setKP(this->get_parameter("kp").as_double());
         yaw_pid->setKI(this->get_parameter("ki").as_double());
         yaw_pid->setKD(this->get_parameter("kd").as_double());
-        //cmd_lin_vel = this->get_parameter("vel").as_double();
-        if (abs(cmd_ang_vel) < 0.0001)
+        cmd_spd_regulator(cmd_lin_spd, cmd_lin_vel, "Linear");
+        cmd_spd_regulator(cmd_ang_spd, cmd_ang_vel, "Angular");
+        if (abs(cmd_ang_spd) < 0.01)
         {
             // Wait for 25 counts or 250ms to get the stable yaw angle 
             // Reason for 250ms wait is the window size used for averaging in 
@@ -197,11 +232,10 @@ private:
             {
                 double yaw_error = (double)(desired_yaw - yaw_angle);
                 double pid_motor_correction = yaw_pid->getErrorOutput(yaw_error);
-                cmd_spd = cmd_lin_vel;
-                //reduceSpeedIfYawErrorIsMore(yaw_error, cmd_spd, cmd_lin_vel);
-                RCLCPP_INFO(this->get_logger(), "yaw_error = %f pid_motor_correction = %f cmd_spd = %f", yaw_error, pid_motor_correction, cmd_spd);
-                double left_speed = cmd_spd + pid_motor_correction;
-                double right_speed = cmd_spd - pid_motor_correction;
+                cmd_lin_spd = reduceSpeedIfYawErrorIsMore(yaw_error, cmd_lin_spd);
+                //RCLCPP_INFO(this->get_logger(), "yaw_error = %f pid_motor_correction = %f cmd_lin_spd = %f", yaw_error, pid_motor_correction, cmd_lin_spd);
+                double left_speed = cmd_lin_spd + pid_motor_correction;
+                double right_speed = cmd_lin_spd - pid_motor_correction;
                 setMotorSpeeds(left_speed, right_speed);
             }
         }
@@ -219,8 +253,8 @@ private:
             }
             else
             {
-                double left_speed = cmd_lin_vel + (double)(cmd_ang_vel * WHEEL_DISTANCE)/4.0;
-                double right_speed = cmd_lin_vel - (double)(cmd_ang_vel * WHEEL_DISTANCE)/4.0;
+                double left_speed = cmd_lin_spd + (double)(cmd_ang_spd * WHEEL_DISTANCE)/4.0;
+                double right_speed = cmd_lin_spd - (double)(cmd_ang_spd * WHEEL_DISTANCE)/4.0;
                 setMotorSpeeds(left_speed, right_speed);
             }
         }        
@@ -231,15 +265,16 @@ private:
     //rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr yaw_subscription_;
     rclcpp::Subscription<geometry_msgs::msg::Quaternion>::SharedPtr yaw_subscription_;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr cmd_vel_subscription_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr motor_speed_publisher_;
     
     double max_motor_limit;
     double min_motor_limit;
     
     float cmd_lin_vel;
-    float cmd_spd;
     float cmd_ang_vel;
+    float cmd_lin_spd;
+    float cmd_ang_spd;
     float yaw_angle;
-    double cmd_vel;
 
     PID* yaw_pid;
     PID* yaw_rate_pid;
@@ -248,6 +283,7 @@ private:
     bool speed_reduced;
     int straight_count_;
     int turn_count_;
+    //int count;
 };
 
 int main(int argc, char * argv[])

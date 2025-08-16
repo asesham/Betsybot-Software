@@ -4,7 +4,7 @@
   <version>0.0.1</version>
   <description>Master launch package to start multiple nodes</description>
 
-  <maintainer email="you@example.com">Your Name</maintainer>
+  <maintainer email="you@example.com"> Betsy Bhaiyaa </maintainer>
   <license>Apache-2.0</license>
 
   <!-- Build tool dependency -->
@@ -13,5 +13,9 @@
   <!-- Runtime dependencies -->
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
+  
+  <export>
+   <build_type>ament_cmake</build_type>
+  </export>
 
 </package>
