@@ -153,22 +153,22 @@ private:
 #if ENABLE_MOTORS
         // Set Motor Speeds
         // class member variable
-        controls::VelocityVoltage m_velocity{0_tps};
+       // controls::VelocityVoltage m_velocity{0_tps};
 
 
         // periodic, run velocity control with slot 0 configs,
         // target velocity of 50 rps
-        m_velocity.Slot = 0;
-        m_velocity.WithVelocity(5_tps);
-        m_velocity.WithAcceleration(0.2_tr_per_s_sq);
+        //m_velocity.Slot = 0;
+        //m_velocity.WithVelocity(5_tps);
+        //m_velocity.WithAcceleration(0.2_tr_per_s_sq);
         //std::cout << m_velocity.ToString() << std::endl;
-        leftMotor.SetControl(m_velocity);
+        //leftMotor.SetControl(m_velocity);
         //rightMotor.SetControl(m_velocity.WithVelocity(0_tps));
         
-        //leftOut.Output = 0.05; //left_speed;
-        //rightOut.Output = 0.05; //right_speed;
-        //leftMotor.SetControl(leftOut);
-        //rightMotor.SetControl(rightOut);
+        leftOut.Output = left_speed;
+        rightOut.Output = right_speed;
+        leftMotor.SetControl(leftOut);
+        rightMotor.SetControl(rightOut);
 #endif
         geometry_msgs::msg::Twist msg;
         msg.linear.x = (float)leftMotor.GetVelocity().GetValueAsDouble();
@@ -198,7 +198,7 @@ private:
     
     void cmd_spd_regulator(float& cmd_speed, float cmd_vel, std::string tag)
     {
-        float inc = (cmd_vel - cmd_speed)/200;
+        float inc = (cmd_vel - cmd_speed)/50;
         cmd_speed += inc;
         //RCLCPP_INFO(this->get_logger(), "%s: Command Speed = %f, command Velocity = %f", tag.c_str(), cmd_speed, cmd_vel);     
     }

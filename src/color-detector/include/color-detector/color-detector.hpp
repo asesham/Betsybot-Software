@@ -32,7 +32,7 @@ using CameraInfoConstPtr = sensor_msgs::msg::CameraInfo::ConstSharedPtr;
 class ColorDetector : public rclcpp::Node
 {
 public:
-    ColorDetector();
+    ColorDetector(const rclcpp::NodeOptions & options);
 private:
 
     void detectCircles(Mat src);

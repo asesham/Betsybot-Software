@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cpp_parameters)
+project(obstacle-avoidance)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -7,18 +7,18 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(rclcpp_components REQUIRED)
+# uncomment the following section in order to fill in
+# further dependencies manually.
+# find_package(<dependency> REQUIRED)
 
-#add_executable(minimal_param_node src/cpp_parameters_node.cpp)
-add_library(minimal_param_component SHARED src/cpp_parameters_node.cpp)
-ament_target_dependencies(minimal_param_component rclcpp std_msgs rclcpp_components)
-ament_export_targets(export_minimal_param_component)
-install(TARGETS minimal_param_component
-        EXPORT export_minimal_param_component
-        DESTINATION lib
-)
+add_executable(obstacle_avoidance src/obstacle_avoidance.cpp)
+target_include_directories(obstacle_avoidance PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>)
+target_compile_features(obstacle_avoidance PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+
+install(TARGETS obstacle_avoidance
+  DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -31,19 +31,5 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
-
-
-# Install launch files
-install(DIRECTORY 
-    launch
-    DESTINATION share/${PROJECT_NAME}
-    )
-    
-    
-rclcpp_components_register_node(
-    minimal_param_component
-    PLUGIN "MinimalParam"
-    EXECUTABLE minimal_param
-)
 
 ament_package()

@@ -61,6 +61,12 @@ class ControllerDrive(Node):
         self.create_timer(self.timer_period, lambda: self.process_channel(self.lin_state, "Linear"))
         self.create_timer(self.timer_period, lambda: self.process_channel(self.ang_state, "Angular"))
 
+    def exit_node(self):
+        msg = Twist()
+        msg.linear.x = 0.0
+        msg.angular.z = 0.0
+        self.control_cmd_pub.publish(msg)
+
     def get_cmd_vel(self, cmd_in: float) -> float:
         cmd = 0.0
         sign = int(cmd_in / abs(cmd_in))
@@ -164,6 +170,8 @@ class ControllerDrive(Node):
 
         except Exception as e:
             self.get_logger().error(f"{label} channel error: {e}")
+            exit_node()
+            rclpy.shutdown()
 
         state["prev_avg"] = init_mean
 
@@ -171,7 +179,14 @@ class ControllerDrive(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = ControllerDrive()
-    rclpy.spin(node)
+    try:
+        rclpy.spin(node)
+    except KeyboardInterupt:
+        node.exit_node()
+        pass
+    finally:
+        node.destroy_node()
+
     rclpy.shutdown()
 
 

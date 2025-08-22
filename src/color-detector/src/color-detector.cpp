@@ -2,10 +2,11 @@
 #include "color-detector/color-detector.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "cv_bridge/cv_bridge.h"
+#include <rclcpp_components/register_node_macro.hpp>
 
 using namespace std::chrono_literals;
 
-ColorDetector::ColorDetector() : Node("color_detector")
+ColorDetector::ColorDetector(const rclcpp::NodeOptions & options) : Node("color_detector", options)
 {
     rgbd_subscriber_ = this->create_subscription<realsense2_camera_msgs::msg::RGBD>
      ("/camera/camera/rgbd", 10, std::bind(&ColorDetector::rgbd_callback, this, std::placeholders::_1));
@@ -144,6 +145,7 @@ void ColorDetector::timer_callback()
     color_publisher_->publish(trigger);
 } 
 
+/*
 int main(int argc, char ** argv)
 {
     rclcpp::init(argc, argv);
@@ -151,4 +153,7 @@ int main(int argc, char ** argv)
     rclcpp::shutdown();
     return 0;
 }
+*/
+RCLCPP_COMPONENTS_REGISTER_NODE(ColorDetector)
+
 

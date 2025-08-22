@@ -61,7 +61,7 @@ configurable_parameters = [{'name': 'camera_name',                  'default': '
                            {'name': 'enable_accel',                 'default': 'true', 'description': "'enable accel stream'"},
                            {'name': 'gyro_fps',                     'default': '0', 'description': "''"},
                            {'name': 'accel_fps',                    'default': '0', 'description': "''"},
-                           {'name': 'unite_imu_method',             'default': "2", 'description': '[0-None, 1-copy, 2-linear_interpolation]'},
+                           {'name': 'unite_imu_method',             'default': "0", 'description': '[0-None, 1-copy, 2-linear_interpolation]'},
                            {'name': 'clip_distance',                'default': '-2.', 'description': "''"},
                            {'name': 'angular_velocity_cov',         'default': '0.01', 'description': "''"},
                            {'name': 'linear_accel_cov',             'default': '0.01', 'description': "''"},
@@ -94,7 +94,7 @@ def set_configurable_parameters(parameters):
 def yaml_to_dict(path_to_yaml):
     with open(path_to_yaml, "r") as f:
         return yaml.load(f, Loader=yaml.SafeLoader)
-
+"""
 def launch_setup(context, params, param_name_suffix=''):
     _config_file = LaunchConfiguration('config_file' + param_name_suffix).perform(context)
     params_from_file = {} if _config_file == "''" else yaml_to_dict(_config_file)
@@ -105,21 +105,61 @@ def launch_setup(context, params, param_name_suffix=''):
         # but supports it as string, so we fetch the string from this substitution object
         # see related PR that was merged for humble, iron, rolling: https://github.com/ros2/launch/pull/577
         _output = context.perform_substitution(_output)
-
+        
     return [
-        launch_ros.actions.Node(
+        launch_ros.descriptions.ComposableNode(
             package='realsense2_camera',
+            plugin='realsense2_camera::RealSenseNodeFactory',
             namespace=LaunchConfiguration('camera_namespace' + param_name_suffix),
             name=LaunchConfiguration('camera_name' + param_name_suffix),
-            executable='realsense2_camera_node',
-            parameters=[params, params_from_file],
-            output=_output,
-            arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level' + param_name_suffix)],
-            emulate_tty=True,
-            )
+            parameters=[set_configurable_parameters(frame_latency_node_params)], #[params, params_from_file],
+            extra_arguments=[{'use_intra_process_comms': True}]
+        )
     ]
+"""
 
 def generate_launch_description():
-    return LaunchDescription(declare_configurable_parameters(configurable_parameters) + [
-        OpaqueFunction(function=launch_setup, kwargs = {'params' : set_configurable_parameters(configurable_parameters)})
-    ])
+    return LaunchDescription(
+        declare_configurable_parameters(configurable_parameters) + [
+            launch_ros.actions.LoadComposableNodes(
+                target_container='/Betsybot_Software/camera_container',
+                composable_node_descriptions=[
+                    launch_ros.descriptions.ComposableNode(
+                        package='realsense2_camera',
+                        plugin='realsense2_camera::RealSenseNodeFactory',
+                        namespace=LaunchConfiguration('camera_namespace'),
+                        name=LaunchConfiguration('camera_name'),
+                        parameters=[set_configurable_parameters(configurable_parameters)], #[params, params_from_file],
+                        extra_arguments=[{'use_intra_process_comms': True}]
+                    ),
+                ],
+            )
+        ]
+    )
+
+"""
+def generate_launch_description():
+    return LaunchDescription(
+        declare_configurable_parameters(configurable_parameters) + [
+            launch_ros.actions.ComposableNodeContainer(
+                name='realsense_container',
+                namespace='',
+                package='rclcpp_components',
+                executable='component_container_mt',
+                composable_node_descriptions=[
+                    launch_ros.descriptions.ComposableNode(
+                        package='realsense2_camera',
+                        plugin='realsense2_camera::RealSenseNodeFactory',
+                        namespace=LaunchConfiguration('camera_namespace'),
+                        name=LaunchConfiguration('camera_name'),
+                        parameters=[set_configurable_parameters(configurable_parameters)], #[params, params_from_file],
+                        extra_arguments=[{'use_intra_process_comms': True}]
+                    )
+                ],
+                output='screen',
+                arguments=['--ros-args', '--log-level', LaunchConfiguration('log_level')],
+                emulate_tty=True,
+            )
+        ]
+    )
+"""
