@@ -142,7 +142,9 @@ void ColorDetector::rgbd_callback (const realsense2_camera_msgs::msg::RGBD::Shar
 
 void ColorDetector::timer_callback()
 {
-    color_publisher_->publish(trigger);
+	if (trigger.data != prev_trigger_data)
+        color_publisher_->publish(trigger);
+	prev_trigger_data = trigger.data;
 } 
 
 /*

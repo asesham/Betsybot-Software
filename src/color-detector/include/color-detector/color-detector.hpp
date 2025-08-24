@@ -57,6 +57,7 @@ private:
     int red_threshold;
     
     std_msgs::msg::String trigger;
+	std::string prev_trigger_data = "NONE";
 };
 
 #endif  // COLOR_DETECTOR_HPP_
