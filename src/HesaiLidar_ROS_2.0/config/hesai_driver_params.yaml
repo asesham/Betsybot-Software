@@ -1,0 +1,5 @@
+lidar:
+  - driver:
+# Pattern A (common in newer drivers)
+      timestamp_type: "ros"           # or "ros_reception"
+      use_gps_time: false

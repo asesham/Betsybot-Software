@@ -1,0 +1,10 @@
+{
+  "package_name": "hesai_ros_driver",
+  "non_idl_tuples": [
+    "/home/betsybot/HesaiLidar_ROS_2.0:msg/msg_ros2/UdpPacket.msg",
+    "/home/betsybot/HesaiLidar_ROS_2.0:msg/msg_ros2/UdpFrame.msg",
+    "/home/betsybot/HesaiLidar_ROS_2.0:msg/msg_ros2/Firetime.msg",
+    "/home/betsybot/HesaiLidar_ROS_2.0:msg/msg_ros2/Ptp.msg",
+    "/home/betsybot/HesaiLidar_ROS_2.0:msg/msg_ros2/LossPacket.msg"
+  ]
+}

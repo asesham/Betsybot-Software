@@ -1,0 +1,117 @@
+[0.256s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.256s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=6, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff92d8d930>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff92d03070>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff92d03070>>, mixin_verb=('build',))
+[0.355s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.355s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.355s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.356s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.356s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.356s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.356s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/betsybot/HesaiLidar_ROS_2.0'
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.356s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.357s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.410s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'hesai_ros_driver'
+[0.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.458s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.458s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.461s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.461s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.462s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/betsybot/HesaiLidar_ROS_2.0/install
+[0.463s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/betsybot/ros2_ws/install
+[0.466s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 483 installed packages in /opt/ros/humble
+[0.470s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_args' from command line to 'None'
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_target' from command line to 'None'
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_clean_cache' from command line to 'False'
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_clean_first' from command line to 'False'
+[0.605s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'cmake_force_configure' from command line to 'False'
+[0.606s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'ament_cmake_args' from command line to 'None'
+[0.606s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'catkin_cmake_args' from command line to 'None'
+[0.606s] Level 5:colcon.colcon_core.verb:set package 'hesai_ros_driver' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.606s] DEBUG:colcon.colcon_core.verb:Building package 'hesai_ros_driver' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver', 'merge_install': False, 'path': '/home/betsybot/HesaiLidar_ROS_2.0', 'symlink_install': False, 'test_result_base': None}
+[0.606s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.608s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.609s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/betsybot/HesaiLidar_ROS_2.0' with build type 'ament_cmake'
+[0.609s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/betsybot/HesaiLidar_ROS_2.0'
+[0.615s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.615s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.615s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.635s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/betsybot/HesaiLidar_ROS_2.0 -DCMAKE_INSTALL_PREFIX=/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver
+[6.463s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver' returned '0': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/betsybot/HesaiLidar_ROS_2.0 -DCMAKE_INSTALL_PREFIX=/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver
+[6.468s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver -- -j6 -l6
+[89.603s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver' returned '0': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver -- -j6 -l6
+[89.629s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver
+[89.805s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(hesai_ros_driver)
+[89.807s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver' returned '0': CFLAGS=-I/usr/local/lib/python3.x/dist-packages/numpy/core/include/ CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver
+[89.817s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' for CMake module files
+[89.818s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' for CMake config files
+[89.819s] Level 1:colcon.colcon_core.shell:create_environment_hook('hesai_ros_driver', 'cmake_prefix_path')
+[89.819s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.ps1'
+[89.821s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.dsv'
+[89.822s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.sh'
+[89.824s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib'
+[89.825s] Level 1:colcon.colcon_core.shell:create_environment_hook('hesai_ros_driver', 'ld_library_path_lib')
+[89.826s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.ps1'
+[89.828s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.dsv'
+[89.829s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.sh'
+[89.830s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/bin'
+[89.831s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/pkgconfig/hesai_ros_driver.pc'
+[89.832s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/python3.10/site-packages'
+[89.832s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/bin'
+[89.833s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.ps1'
+[89.835s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.dsv'
+[89.836s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.sh'
+[89.838s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.bash'
+[89.839s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.zsh'
+[89.841s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/colcon-core/packages/hesai_ros_driver)
+[89.843s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(hesai_ros_driver)
+[89.844s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' for CMake module files
+[89.846s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver' for CMake config files
+[89.847s] Level 1:colcon.colcon_core.shell:create_environment_hook('hesai_ros_driver', 'cmake_prefix_path')
+[89.848s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.ps1'
+[89.849s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.dsv'
+[89.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/cmake_prefix_path.sh'
+[89.853s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib'
+[89.853s] Level 1:colcon.colcon_core.shell:create_environment_hook('hesai_ros_driver', 'ld_library_path_lib')
+[89.854s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.ps1'
+[89.854s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.dsv'
+[89.855s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/hook/ld_library_path_lib.sh'
+[89.856s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/bin'
+[89.856s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/pkgconfig/hesai_ros_driver.pc'
+[89.857s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/python3.10/site-packages'
+[89.857s] Level 1:colcon.colcon_core.environment:checking '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/bin'
+[89.858s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.ps1'
+[89.859s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.dsv'
+[89.861s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.sh'
+[89.862s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.bash'
+[89.863s] INFO:colcon.colcon_core.shell:Creating package script '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.zsh'
+[89.864s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/colcon-core/packages/hesai_ros_driver)
+[89.864s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[89.865s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[89.866s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[89.866s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[89.887s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[89.888s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[89.888s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[89.934s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[89.936s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/betsybot/HesaiLidar_ROS_2.0/install/local_setup.ps1'
+[89.938s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/betsybot/HesaiLidar_ROS_2.0/install/_local_setup_util_ps1.py'
+[89.942s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/betsybot/HesaiLidar_ROS_2.0/install/setup.ps1'
+[89.946s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/betsybot/HesaiLidar_ROS_2.0/install/local_setup.sh'
+[89.947s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/betsybot/HesaiLidar_ROS_2.0/install/_local_setup_util_sh.py'
+[89.949s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/betsybot/HesaiLidar_ROS_2.0/install/setup.sh'
+[89.952s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/betsybot/HesaiLidar_ROS_2.0/install/local_setup.bash'
+[89.953s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/betsybot/HesaiLidar_ROS_2.0/install/setup.bash'
+[89.955s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/betsybot/HesaiLidar_ROS_2.0/install/local_setup.zsh'
+[89.956s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/betsybot/HesaiLidar_ROS_2.0/install/setup.zsh'

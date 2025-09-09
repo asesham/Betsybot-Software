@@ -1,0 +1,264 @@
+[0.023s] Invoking command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver -- -j6 -l6
+[0.136s] [35m[1mConsolidate compiler generated dependencies of target log_lib[0m
+[0.140s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_generator_c[0m
+[0.155s] [  1%] Built target hesai_ros_driver__cpp
+[0.165s] [  3%] Built target log_lib
+[0.167s] [ 10%] Built target hesai_ros_driver__rosidl_generator_c
+[0.182s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_introspection_cpp[0m
+[0.183s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_fastrtps_cpp[0m
+[0.184s] [ 10%] Built target ament_cmake_python_copy_hesai_ros_driver
+[0.187s] [35m[1mConsolidate compiler generated dependencies of target platutils_lib[0m
+[0.192s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_cpp[0m
+[0.209s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_introspection_c[0m
+[0.213s] [ 18%] Built target hesai_ros_driver__rosidl_typesupport_introspection_cpp
+[0.213s] [ 21%] Built target platutils_lib
+[0.217s] [ 29%] Built target hesai_ros_driver__rosidl_typesupport_fastrtps_cpp
+[0.218s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_fastrtps_c[0m
+[0.230s] [ 36%] Built target hesai_ros_driver__rosidl_typesupport_cpp
+[0.235s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_c[0m
+[0.240s] [ 44%] Built target hesai_ros_driver__rosidl_typesupport_introspection_c
+[0.252s] [35m[1mConsolidate compiler generated dependencies of target udpParser_lib[0m
+[0.256s] [35m[1mConsolidate compiler generated dependencies of target ptcClient_lib[0m
+[0.257s] [ 58%] Built target hesai_ros_driver__rosidl_typesupport_c
+[0.258s] [ 59%] Built target hesai_ros_driver__rosidl_typesupport_fastrtps_c
+[0.267s] [35m[1mConsolidate compiler generated dependencies of target source_lib[0m
+[0.290s] [ 61%] Built target udpParser_lib
+[0.294s] [ 69%] Built target ptcClient_lib
+[0.298s] [ 76%] Built target source_lib
+[0.300s] [ 76%] Built target hesai_ros_driver
+[0.319s] [35m[1mConsolidate compiler generated dependencies of target serialClient_lib[0m
+[0.339s] [ 77%] Built target hesai_ros_driver__py
+[0.348s] [ 79%] Built target serialClient_lib
+[0.364s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_generator_py[0m
+[0.367s] [35m[1mConsolidate compiler generated dependencies of target lidar_lib[0m
+[0.396s] [ 86%] Built target hesai_ros_driver__rosidl_generator_py
+[0.397s] [ 88%] Built target lidar_lib
+[0.417s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_fastrtps_c__pyext[0m
+[0.418s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_introspection_c__pyext[0m
+[0.418s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver__rosidl_typesupport_c__pyext[0m
+[0.423s] [35m[1mConsolidate compiler generated dependencies of target hesai_sdk_lib[0m
+[0.443s] [ 92%] Built target hesai_ros_driver__rosidl_typesupport_fastrtps_c__pyext
+[0.443s] [ 92%] Built target hesai_ros_driver__rosidl_typesupport_introspection_c__pyext
+[0.446s] [ 94%] Built target hesai_ros_driver__rosidl_typesupport_c__pyext
+[0.460s] [ 96%] Built target hesai_sdk_lib
+[0.490s] [35m[1mConsolidate compiler generated dependencies of target hesai_ros_driver_node[0m
+[0.558s] [100%] Built target hesai_ros_driver_node
+[0.721s] running egg_info
+[0.759s] writing hesai_ros_driver.egg-info/PKG-INFO
+[0.760s] writing dependency_links to hesai_ros_driver.egg-info/dependency_links.txt
+[0.761s] writing top-level names to hesai_ros_driver.egg-info/top_level.txt
+[1.224s] reading manifest file 'hesai_ros_driver.egg-info/SOURCES.txt'
+[1.227s] writing manifest file 'hesai_ros_driver.egg-info/SOURCES.txt'
+[1.332s] [100%] Built target ament_cmake_python_build_hesai_ros_driver_egg
+[1.363s] Invoked command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver -- -j6 -l6
+[1.386s] Invoking command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver
+[1.406s] -- Install configuration: "Release"
+[1.407s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/ament_index/resource_index/rosidl_interfaces/hesai_ros_driver
+[1.407s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.407s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.407s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/udp_packet.h
+[1.408s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/loss_packet.h
+[1.408s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/firetime.h
+[1.408s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/ptp.h
+[1.408s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__type_support.h
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__struct.h
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__type_support.h
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__functions.h
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__functions.c
+[1.409s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__functions.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__struct.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__functions.c
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__struct.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__functions.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__struct.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__functions.c
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__type_support.h
+[1.410s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__functions.c
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__type_support.h
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__functions.h
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__functions.c
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__struct.h
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__type_support.h
+[1.411s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__functions.h
+[1.412s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/rosidl_generator_c__visibility_control.h
+[1.412s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/udp_frame.h
+[1.412s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/library_path.sh
+[1.412s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/library_path.dsv
+[1.412s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_generator_c.so
+[1.413s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.413s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.413s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.413s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__rosidl_typesupport_fastrtps_c.h
+[1.413s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__rosidl_typesupport_fastrtps_c.h
+[1.414s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__rosidl_typesupport_fastrtps_c.h
+[1.414s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__rosidl_typesupport_fastrtps_c.h
+[1.414s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__rosidl_typesupport_fastrtps_c.h
+[1.415s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.415s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_fastrtps_c.so
+[1.415s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.415s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.415s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/udp_frame.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/ptp.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/loss_packet.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/udp_packet.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/firetime.hpp
+[1.416s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__builder.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__traits.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__struct.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__traits.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__traits.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__type_support.hpp
+[1.417s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__type_support.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__struct.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__struct.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__builder.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__type_support.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__type_support.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__builder.hpp
+[1.418s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__traits.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__traits.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__type_support.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__builder.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__struct.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__struct.hpp
+[1.419s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__builder.hpp
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__rosidl_typesupport_fastrtps_cpp.hpp
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__rosidl_typesupport_fastrtps_cpp.hpp
+[1.420s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__rosidl_typesupport_fastrtps_cpp.hpp
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/dds_fastrtps
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__rosidl_typesupport_fastrtps_cpp.hpp
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__rosidl_typesupport_fastrtps_cpp.hpp
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_fastrtps_cpp.so
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.421s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__type_support.c
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__rosidl_typesupport_introspection_c.h
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__type_support.c
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__type_support.c
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__type_support.c
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__rosidl_typesupport_introspection_c.h
+[1.422s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__rosidl_typesupport_introspection_c.h
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__type_support.c
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__rosidl_typesupport_introspection_c.h
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__rosidl_typesupport_introspection_c.h
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_introspection_c.so
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_c.so
+[1.423s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver
+[1.424s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg
+[1.424s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail
+[1.424s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__type_support.cpp
+[1.424s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__type_support.cpp
+[1.424s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__rosidl_typesupport_introspection_cpp.hpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__type_support.cpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/firetime__rosidl_typesupport_introspection_cpp.hpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_frame__rosidl_typesupport_introspection_cpp.hpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/ptp__type_support.cpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/udp_packet__rosidl_typesupport_introspection_cpp.hpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__rosidl_typesupport_introspection_cpp.hpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/include/hesai_ros_driver/hesai_ros_driver/msg/detail/loss_packet__type_support.cpp
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_introspection_cpp.so
+[1.425s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_typesupport_cpp.so
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/pythonpath.sh
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/pythonpath.dsv
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver-1.5.0-py3.10.egg-info
+[1.426s] -- Installing: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver-1.5.0-py3.10.egg-info/top_level.txt
+[1.426s] -- Installing: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver-1.5.0-py3.10.egg-info/PKG-INFO
+[1.426s] -- Installing: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver-1.5.0-py3.10.egg-info/SOURCES.txt
+[1.426s] -- Installing: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver-1.5.0-py3.10.egg-info/dependency_links.txt
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[1.426s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/libhesai_ros_driver__rosidl_generator_py.so
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/__init__.py
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/_hesai_ros_driver_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/_hesai_ros_driver_s.ep.rosidl_typesupport_c.c
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_ptp.py
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_loss_packet_s.c
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_udp_frame_s.c
+[1.427s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/__init__.py
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_udp_packet.py
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_udp_frame.py
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_firetime.py
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_ptp_s.c
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_udp_packet_s.c
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_firetime_s.c
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg/_loss_packet.py
+[1.428s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/_hesai_ros_driver_s.ep.rosidl_typesupport_introspection_c.c
+[1.493s] Listing '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver'...
+[1.493s] Listing '/home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/msg'...
+[1.505s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_fastrtps_c.cpython-310-aarch64-linux-gnu.so
+[1.505s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_introspection_c.cpython-310-aarch64-linux-gnu.so
+[1.506s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/local/lib/python3.10/dist-packages/hesai_ros_driver/hesai_ros_driver_s__rosidl_typesupport_c.cpython-310-aarch64-linux-gnu.so
+[1.508s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_ros_driver__rosidl_generator_py.so
+[1.508s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg/UdpPacket.idl
+[1.508s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg/UdpFrame.idl
+[1.509s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg/Firetime.idl
+[1.509s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg/Ptp.idl
+[1.509s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg/LossPacket.idl
+[1.510s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg_ros2/UdpPacket.msg
+[1.510s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg_ros2/UdpFrame.msg
+[1.510s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg_ros2/Firetime.msg
+[1.510s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg_ros2/Ptp.msg
+[1.510s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/msg_ros2/LossPacket.msg
+[1.511s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/hesai_ros_driver/hesai_ros_driver_node
+[1.511s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/libhesai_sdk_lib.so
+[1.512s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/liblog_lib.so
+[1.513s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/lib/liblidar_lib.so
+[1.513s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/launch
+[1.514s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/launch/dashing_start.py
+[1.514s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/launch/start.launch
+[1.514s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/launch/start.py
+[1.514s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/rviz
+[1.515s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/rviz/rviz.rviz
+[1.515s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/rviz/rviz2.rviz
+[1.515s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/ament_index/resource_index/package_run_dependencies/hesai_ros_driver
+[1.515s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/ament_index/resource_index/parent_prefix_path/hesai_ros_driver
+[1.516s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/ament_prefix_path.sh
+[1.516s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/ament_prefix_path.dsv
+[1.516s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/path.sh
+[1.517s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/environment/path.dsv
+[1.517s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/local_setup.bash
+[1.517s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/local_setup.sh
+[1.517s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/local_setup.zsh
+[1.517s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/local_setup.dsv
+[1.518s] -- Installing: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.dsv
+[1.518s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/ament_index/resource_index/packages/hesai_ros_driver
+[1.519s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_generator_cExport.cmake
+[1.519s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_generator_cExport-release.cmake
+[1.519s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_typesupport_fastrtps_cExport.cmake
+[1.519s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_typesupport_fastrtps_cExport-release.cmake
+[1.520s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_generator_cppExport.cmake
+[1.520s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_typesupport_fastrtps_cppExport.cmake
+[1.520s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_typesupport_fastrtps_cppExport-release.cmake
+[1.521s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_introspection_cExport.cmake
+[1.521s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_introspection_cExport-release.cmake
+[1.521s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_cExport.cmake
+[1.521s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_cExport-release.cmake
+[1.522s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_introspection_cppExport.cmake
+[1.522s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_introspection_cppExport-release.cmake
+[1.522s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_cppExport.cmake
+[1.522s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driver__rosidl_typesupport_cppExport-release.cmake
+[1.523s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_generator_pyExport.cmake
+[1.523s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/export_hesai_ros_driver__rosidl_generator_pyExport-release.cmake
+[1.523s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/rosidl_cmake-extras.cmake
+[1.523s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.523s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/ament_cmake_export_libraries-extras.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/ament_cmake_export_targets-extras.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driverConfig.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/cmake/hesai_ros_driverConfig-version.cmake
+[1.524s] -- Up-to-date: /home/betsybot/HesaiLidar_ROS_2.0/install/hesai_ros_driver/share/hesai_ros_driver/package.xml
+[1.531s] Invoked command in '/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver

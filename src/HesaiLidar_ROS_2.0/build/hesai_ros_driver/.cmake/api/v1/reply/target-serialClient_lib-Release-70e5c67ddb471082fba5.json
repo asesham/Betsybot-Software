@@ -1,0 +1,374 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "src/driver/HesaiLidar_SDK_2.0/libhesai/libserialClient_lib.so"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"add_compile_options",
+			"add_definitions",
+			"include",
+			"find_package",
+			"ament_execute_extensions",
+			"rosidl_generate_interfaces",
+			"include_directories",
+			"target_include_directories",
+			"set_target_properties"
+		],
+		"files" : 
+		[
+			"src/driver/HesaiLidar_SDK_2.0/libhesai/CMakeLists.txt",
+			"CMakeLists.txt",
+			"/opt/ros/humble/share/ament_cmake_ros/cmake/ament_cmake_ros-extras.cmake",
+			"/opt/ros/humble/share/ament_cmake_ros/cmake/ament_cmake_rosConfig.cmake",
+			"/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_c_generate_interfaces.cmake",
+			"/opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake",
+			"/opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 166,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 168,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 71,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 55,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 125,
+				"parent" : 3
+			},
+			{
+				"command" : 7,
+				"file" : 1,
+				"line" : 138,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 6,
+				"line" : 286,
+				"parent" : 7
+			},
+			{
+				"command" : 4,
+				"file" : 5,
+				"line" : 48,
+				"parent" : 8
+			},
+			{
+				"file" : 4,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 4,
+				"line" : 21,
+				"parent" : 10
+			},
+			{
+				"file" : 3,
+				"parent" : 11
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 41,
+				"parent" : 12
+			},
+			{
+				"file" : 2,
+				"parent" : 13
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 25,
+				"parent" : 14
+			},
+			{
+				"command" : 8,
+				"file" : 1,
+				"line" : 126,
+				"parent" : 3
+			},
+			{
+				"command" : 8,
+				"file" : 1,
+				"line" : 162,
+				"parent" : 3
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 56,
+				"parent" : 0
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 66,
+				"parent" : 0
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 172,
+				"parent" : 0
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 170,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -std=c++17 -O3 -DNDEBUG -fPIC   -O3 -O3"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-Wall"
+				},
+				{
+					"fragment" : "-std=gnu++14"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 5,
+					"define" : "PROJECT_PATH=\"/home/betsybot/HesaiLidar_ROS_2.0\""
+				},
+				{
+					"backtrace" : 6,
+					"define" : "ROS2_FOUND"
+				},
+				{
+					"backtrace" : 15,
+					"define" : "ROS_PACKAGE_NAME=\"hesai_ros_driver\""
+				},
+				{
+					"define" : "serialClient_lib_EXPORTS"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rclcpp"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/ament_index_cpp"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/libstatistics_collector"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rcl"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rcpputils"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rcutils"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/builtin_interfaces"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rosgraph_msgs"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rosidl_typesupport_cpp"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rosidl_typesupport_c"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rosidl_runtime_cpp"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/rcl_yaml_param_parser"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/statistics_msgs"
+				},
+				{
+					"backtrace" : 16,
+					"path" : "/opt/ros/humble/include/tracetools"
+				},
+				{
+					"backtrace" : 17,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src"
+				},
+				{
+					"backtrace" : 18,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver/src/driver/HesaiLidar_SDK_2.0/libhesai"
+				},
+				{
+					"backtrace" : 19,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/."
+				},
+				{
+					"backtrace" : 20,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/SerialClient/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/Source/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/Container/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/Container/src"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/Common/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/home/betsybot/HesaiLidar_ROS_2.0/src/driver/HesaiLidar_SDK_2.0/libhesai/Logger/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					21
+				],
+				"standard" : "14"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "source_lib::@43583181f402ad81a691"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "platutils_lib::@43583181f402ad81a691"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "log_lib::@43583181f402ad81a691"
+		}
+	],
+	"id" : "serialClient_lib::@43583181f402ad81a691",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver/src/driver/HesaiLidar_SDK_2.0/libhesai",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libsource_lib.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "libplatutils_lib.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "liblog_lib.so",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "serialClient_lib",
+	"nameOnDisk" : "libserialClient_lib.so",
+	"paths" : 
+	{
+		"build" : "src/driver/HesaiLidar_SDK_2.0/libhesai",
+		"source" : "src/driver/HesaiLidar_SDK_2.0/libhesai"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/driver/HesaiLidar_SDK_2.0/libhesai/SerialClient/src/serial_client.cc",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

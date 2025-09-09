@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++17 -shared -Wl,-soname,libserialClient_lib.so -o libserialClient_lib.so CMakeFiles/serialClient_lib.dir/SerialClient/src/serial_client.cc.o  -Wl,-rpath,/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver/src/driver/HesaiLidar_SDK_2.0/libhesai libsource_lib.so libplatutils_lib.so liblog_lib.so 

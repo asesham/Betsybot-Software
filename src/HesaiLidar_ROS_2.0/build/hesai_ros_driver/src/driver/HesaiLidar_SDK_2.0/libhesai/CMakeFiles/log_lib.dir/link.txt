@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++17 -shared -Wl,-soname,liblog_lib.so -o liblog_lib.so CMakeFiles/log_lib.dir/Logger/src/logger.cc.o 

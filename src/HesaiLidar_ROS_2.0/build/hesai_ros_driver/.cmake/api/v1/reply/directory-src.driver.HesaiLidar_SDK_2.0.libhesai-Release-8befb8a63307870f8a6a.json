@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "src/driver/HesaiLidar_SDK_2.0/libhesai",
+		"source" : "src/driver/HesaiLidar_SDK_2.0/libhesai"
+	}
+}
