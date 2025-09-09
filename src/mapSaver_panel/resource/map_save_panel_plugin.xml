@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<library path="map_save_panel">
+  <class
+      name="betsybot::MapSavePanel"
+      type="betsybot::MapSavePanel"
+      base_class_type="rviz_common::Panel">
+    <description>Panel with Start/Stop/Reset to save occupancy grid map</description>
+  </class>
+</library>

@@ -14,6 +14,7 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 MESSAGE(STATUS "${phoenix6_INCLUDE_DIRS} ${phoenix6_LIBRARIES}" )
 # uncomment the following section in order to fill in
@@ -34,6 +35,7 @@ set(dependencies
   std_msgs
   sensor_msgs
   geometry_msgs
+  nav_msgs
 )
 ament_target_dependencies(differential-drive ${dependencies})
 

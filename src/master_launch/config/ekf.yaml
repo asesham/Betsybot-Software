@@ -1,0 +1,46 @@
+# ekf.yaml
+ekf_node:
+  ros__parameters:
+    frequency: 30.0
+    sensor_timeout: 0.1
+    two_d_mode: true # Set to true for 2D planar robots
+    transform_time_offset: 0.0
+    transform_timeout: 0.0
+    publish_tf: true
+    publish_acceleration: false
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_footprint # Use base_footprint for odom->base_footprint TF
+    world_frame: odom
+
+    odom0: /kiss/odometry
+    odom0_config: [true,  true,  false,
+               false, false, true,
+               false, false, false,
+               false, false, false,
+               false, false, false]
+    
+    # Odometry (wheel speeds) input
+    #odom0: /wheel_cmd_vel # Replace with your wheel odometry topic
+    #odom0_config: [false, false, false, # x, y, z
+    #               false, false, false, # roll, pitch, yaw
+    #               true, true, false, # vx, vy, vz
+    #               false, false, true, # vroll, vpitch, vyaw
+    #               false, false, false] # ax, ay, az
+    odom0_queue_size: 10
+    odom0_nodelay: false
+    odom0_differential: false
+    odom0_relative: false
+
+    # IMU input
+    imu0: /camera/camera/imu # Replace with your IMU topic
+    imu0_config: [false, false, false, # x, y, z
+                  false, false, false, # roll, pitch, yaw
+                  false, false, false, # vx, vy, vz
+                  false, true, false, # vroll, vpitch, vyaw
+                  false, false, true] # ax, ay, az
+    imu0_queue_size: 10
+    imu0_nodelay: false
+    imu0_differential: false
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true # Recommended for IMUs

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<robot name="betsybot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Define robot constants -->
+
+  <xacro:property name="base_off_ground" value="0.0714375"/> <!-- 2.8125 inches-->
+  <xacro:property name="base_width" value="0.346075"/> <!-- 13.625 inches-->
+  <xacro:property name="base_length" value="0.498475"/> <!-- 19.625 + 7.5 (pool noodle radius) inches-->
+  <xacro:property name="base_height" value="0.18415"/> <!-- 7.25 inches-->
+  <xacro:property name="pool_noodle_radius" value="0.047625"/> <!-- 1.875 inches-->
+
+  <xacro:property name="wheel_radius" value="0.09445625"/> <!-- 3.71875 inches-->
+  <xacro:property name="wheel_width" value="0.0508"/><!-- 2 inches-->
+  <xacro:property name="wheel_ygap" value="0.041275"/><!-- 1.625 inches--> 
+  <xacro:property name="wheel_zoff" value="0.06985"/> <!-- 2.75 inches--> 
+  <xacro:property name="drive_wheel_xoff" value="0.1254125"/><!-- 4.9375 inches-->
+  <xacro:property name="rear_wheel_xoff" value="0.1476375"/><!-- 5.8125 inches-->
+  
+  <xacro:property name="camera_screw_zoff" value="-0.0385"/>
+  <xacro:property name="camera_screw_xoff" value="-0.007"/>
+  
+  <xacro:property name="lidar_radius" value="0.038125"/>
+  <xacro:property name="lidar_length" value="0.076"/>
+  <xacro:property name="hesai_centroid_y" value="-0.0298"/>
+  <xacro:property name="hesai_centroid_z" value="0.0124"/>
+  
+  <xacro:arg name="use_nominal_extrinsics" default="true" />
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+  <!--<link name="odom"/>
+
+  <joint name="odom_joint" type="fixed">
+    <parent link="odom"/>
+    <child link="base_footprint"/>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+  </joint>-->
+<!--  <xacro:property name="caster_xoff" value="0.15875"/> 6.25 inches -->
+    <!-- Robot Base -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="${base_length} ${base_width} ${base_height}"/>
+      </geometry>
+      <material name="Cyan">
+        <color rgba="0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+    <!-- Robot Footprint -->
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+      <origin xyz="${-base_length/2-camera_screw_xoff} 0.0 ${(wheel_radius+wheel_zoff)}" rpy="0 0 0"/>
+  </joint>
+    <!-- Wheels -->
+  <xacro:macro name="wheel" params="prefix x_reflect y_reflect wheel_xoff joint_type">
+    <link name="${prefix}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <geometry>
+            <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+        </geometry>
+        <material name="Gray">
+          <color rgba="0.5 0.5 0.5 1.0"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="${prefix}_joint" type="${joint_type}">
+      <parent link="base_link"/>
+      <child link="${prefix}_link"/>
+      <origin xyz="${x_reflect*wheel_xoff} ${y_reflect*(base_width/2+wheel_ygap)} ${-wheel_zoff}" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+  </xacro:macro>
+  
+  <xacro:wheel prefix="drivewhl_l" x_reflect="1" y_reflect="1" wheel_xoff="${drive_wheel_xoff}" joint_type="continuous"/>
+  <xacro:wheel prefix="drivewhl_r" x_reflect="1" y_reflect="-1" wheel_xoff="${drive_wheel_xoff}" joint_type="continuous"/>
+  <xacro:wheel prefix="rearwhl_l" x_reflect="-1" y_reflect="1" wheel_xoff="${rear_wheel_xoff}" joint_type="fixed"/>
+  <xacro:wheel prefix="rearwhl_r" x_reflect="-1" y_reflect="-1" wheel_xoff="${rear_wheel_xoff}" joint_type="fixed"/>
+
+  <!-- Wheels -->
+  <xacro:macro name="pool_noodle" params="prefix front">
+    <link name="${prefix}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
+        <geometry>
+            <cylinder radius="${pool_noodle_radius}" length="${base_width}"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0.0 0.0 1.0 1.0"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="${prefix}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${prefix}_link"/>
+      <origin xyz="${front*(base_length/2+pool_noodle_radius)} 0 ${-base_height/2+pool_noodle_radius}" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:pool_noodle prefix="front_poolnoodle" front="1"/>
+  <xacro:pool_noodle prefix="rear_poolnoodle" front="-1"/>
+  
+  <!-- *
+  
+              Lidar Link
+  
+  * -->
+  <link name="base_scan">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${lidar_radius}" length="${lidar_length}"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${lidar_radius}" length="${lidar_length}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+  
+    <!-- Joint connecting the LiDAR to a parent link (e.g., base_link) -->
+  <joint name="scan_joint" type="fixed">
+    <parent link="base_link"/> <!-- Replace 'base_link' with your robot's parent link -->
+    <child link="base_scan"/>
+    <origin xyz="${base_length/2-lidar_radius} 0.0 ${(base_height/2+lidar_length/2)}" rpy="0 0 0"/> <!-- Adjust position and orientation relative to parent -->
+  </joint>
+
+   <link name="hesai_lidar"/>
+
+    <!-- Joint connecting the LiDAR to a parent link (e.g., base_scan) -->
+  <joint name="hesai_joint" type="fixed">
+    <parent link="base_scan"/>
+    <child link="hesai_lidar"/>
+    <!--<origin xyz="${base_length/2-lidar_radius} ${hesai_centroid_y} ${(base_height/2+lidar_length/2+hesai_centroid_z)}" rpy="0 0 0"/>-->
+    <origin xyz="0 ${hesai_centroid_y} ${hesai_centroid_z}" rpy="0 0 0"/>
+  </joint>
+  <!-- Camera link -->
+  
+  <xacro:sensor_d435i parent="base_link" use_nominal_extrinsics="$(arg use_nominal_extrinsics)">
+    <origin xyz="${base_length/2+camera_screw_xoff} 0 ${(base_height/2)+camera_screw_zoff}" rpy="0 0 0"/>
+  </xacro:sensor_d435i>
+  
+  <link name="camera_imu_optical_frame"/>
+
+    <!-- Joint connecting the LiDAR to a parent link (e.g., base_scan) -->
+  <joint name="camera_imu_added_joint" type="fixed">
+    <parent link="camera_gyro_optical_frame"/>
+    <child link="camera_imu_optical_frame"/>
+    <!--<origin xyz="${base_length/2-lidar_radius} ${hesai_centroid_y} ${(base_height/2+lidar_length/2+hesai_centroid_z)}" rpy="0 0 0"/>-->
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+</robot>

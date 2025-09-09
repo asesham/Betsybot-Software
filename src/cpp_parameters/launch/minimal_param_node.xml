@@ -1,3 +1,0 @@
-<launch>
-  <node pkg="cpp_parameters" exec="minimal_param_node"/> 
-</launch>

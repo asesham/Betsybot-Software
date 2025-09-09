@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<robot name="lidar_sensor">
+
+  <!-- Lidar Link -->
+  <link name="lidar_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <!-- Define the shape of your LiDAR here, e.g., a cylinder or a mesh -->
+        <cylinder radius="0.05" length="0.1"/>
+        <!-- Or, if you have a 3D model: -->
+        <!-- <mesh filename="package://your_robot_description/meshes/lidar.stl"/> -->
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+        <!-- Or, if using a mesh for visual, ensure a simplified collision mesh -->
+        <!-- <mesh filename="package://your_robot_description/meshes/lidar_collision.stl"/> -->
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+    </inertial>
+  </link>
+
+  <!-- Joint connecting the LiDAR to a parent link (e.g., base_link) -->
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/> <!-- Replace 'base_link' with your robot's parent link -->
+    <child link="lidar_link"/>
+    <origin xyz="0.1 0 0.2" rpy="0 0 0"/> <!-- Adjust position and orientation relative to parent -->
+  </joint>
+
+  <!-- Gazebo specific extensions for 3D LiDAR sensor -->
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="lidar_sensor">
+      <pose>0 0 0 0 0 0</pose> <!-- Pose relative to lidar_link -->
+      <visualize>true</visualize>
+      <update_rate>10</update_rate> <!-- Update rate in Hz -->
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle> <!-- -180 degrees -->
+            <max_angle>3.14159</max_angle>  <!-- +180 degrees -->
+          </horizontal>
+          <vertical>
+            <samples>32</samples>
+            <resolution>1</resolution>
+            <min_angle>-0.2618</min_angle> <!-- -15 degrees -->
+            <max_angle>0.2618</max_angle>  <!-- +15 degrees -->
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </ray>
+      <plugin name="lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace>/lidar</namespace>
+          <argument>~/out:=scan</argument>
+        </ros>
+        <output_type>pointcloud</output_type>
+        <frame_name>lidar_link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>
