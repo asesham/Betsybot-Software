@@ -34,6 +34,7 @@ def generate_launch_description():
     hesai_dir = get_package_share_directory('hesai_ros_driver')
     rs_dir = get_package_share_directory('realsense2_camera')
     slam_dir = get_package_share_directory('slam_toolbox')
+    kiss_icp_dir = get_package_share_directory('kiss_icp')
     launch_dir = os.path.join(master_dir, 'launch')
 
     # Create the launch configuration variables
@@ -106,7 +107,12 @@ def generate_launch_description():
             os.path.join(slam_dir, "launch", 'online_async_launch.py')),
              launch_arguments={"use_sim_time": "false"}.items(),
              )
-            
+    kiss_icp_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(kiss_icp_dir, "launch", 'odometry.launch.py')),
+             launch_arguments={"topic": "/lidar_points"}.items(),
+             )
+             
     super_odom_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(superodom_dir, 'launch', 'vlp_16.launch.py')))
@@ -122,6 +128,7 @@ def generate_launch_description():
     #ld.add_action(points_qos_relay_node)
     ld.add_action(pc_to_ls_launch)
     ld.add_action(ekf_localization_launch)
+    ld.add_action(kiss_icp_launch)
     #ld.add_action(amcl_node)
     ld.add_action(slam_launch)
 
