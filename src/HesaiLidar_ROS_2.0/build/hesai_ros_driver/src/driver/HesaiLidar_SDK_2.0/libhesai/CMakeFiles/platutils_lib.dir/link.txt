@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++17 -shared -Wl,-soname,libplatutils_lib.so -o libplatutils_lib.so CMakeFiles/platutils_lib.dir/Common/src/plat_utils.cc.o CMakeFiles/platutils_lib.dir/Common/src/auto_tick_count.cc.o  -Wl,-rpath,/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver/src/driver/HesaiLidar_SDK_2.0/libhesai liblog_lib.so 

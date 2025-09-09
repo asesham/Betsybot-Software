@@ -1,0 +1,377 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Release-9d1dd8b23a0c92bee1e8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						26
+					]
+				},
+				{
+					"build" : "hesai_ros_driver__py",
+					"jsonFile" : "directory-hesai_ros_driver__py-Release-cd20cabd55229e09a364.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "build/hesai_ros_driver/hesai_ros_driver__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "src/driver/HesaiLidar_SDK_2.0",
+					"childIndexes" : 
+					[
+						3
+					],
+					"jsonFile" : "directory-src.driver.HesaiLidar_SDK_2.0-Release-0fab4d4f814ee2b820f2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8.11"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "src/driver/HesaiLidar_SDK_2.0",
+					"targetIndexes" : 
+					[
+						18
+					]
+				},
+				{
+					"build" : "src/driver/HesaiLidar_SDK_2.0/libhesai",
+					"jsonFile" : "directory-src.driver.HesaiLidar_SDK_2.0.libhesai-Release-8befb8a63307870f8a6a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "src/driver/HesaiLidar_SDK_2.0/libhesai",
+					"targetIndexes" : 
+					[
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "hesai_ros_driver",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						26
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "Template",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						18
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "CommonModules",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_hesai_ros_driver_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_hesai_ros_driver_egg-Release-ff1562bec1cd0bc8fa35.json",
+					"name" : "ament_cmake_python_build_hesai_ros_driver_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_hesai_ros_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_hesai_ros_driver-Release-74632d783f052501d765.json",
+					"name" : "ament_cmake_python_copy_hesai_ros_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver-Release-9a83bb1dc40dd4a936da.json",
+					"name" : "hesai_ros_driver",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__cpp-Release-c6addf8eb3e39ab57f5c.json",
+					"name" : "hesai_ros_driver__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "hesai_ros_driver__py::@f6ca7f34b26da796b369",
+					"jsonFile" : "target-hesai_ros_driver__py-Release-360036accd69648c7f55.json",
+					"name" : "hesai_ros_driver__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_generator_c-Release-d3da19b77c51d9671584.json",
+					"name" : "hesai_ros_driver__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_generator_py-Release-41272d03461137d052fc.json",
+					"name" : "hesai_ros_driver__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_c-Release-183433b9ad19ffdf73a7.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_c__pyext-Release-de8021b2051612fbfb79.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_cpp-Release-fd1064e601851cb23a25.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_fastrtps_c-Release-91e1b0d3023ecb9a4a01.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_fastrtps_c__pyext-Release-3b123c4554d036111d29.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_fastrtps_cpp-Release-1bcf35890c793f82467f.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_introspection_c-Release-471de57fa78b96954484.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_introspection_c__pyext-Release-6d252ef6e23ebdcd6f79.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver__rosidl_typesupport_introspection_cpp-Release-6856b7ffaee2e6a316af.json",
+					"name" : "hesai_ros_driver__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver_node-Release-b2b18c59c3a9fdbc2c2a.json",
+					"name" : "hesai_ros_driver_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "hesai_ros_driver_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-hesai_ros_driver_uninstall-Release-46cca9cf313a91559615.json",
+					"name" : "hesai_ros_driver_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "hesai_sdk_lib::@7740dfa422c4e9a54568",
+					"jsonFile" : "target-hesai_sdk_lib-Release-f6608099b7920ac53695.json",
+					"name" : "hesai_sdk_lib",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "lidar_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-lidar_lib-Release-7a77dcb32c68b0820348.json",
+					"name" : "lidar_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "log_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-log_lib-Release-4f91f865e1654ca81679.json",
+					"name" : "log_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "platutils_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-platutils_lib-Release-94dab1c1067745c17de4.json",
+					"name" : "platutils_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "ptcClient_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-ptcClient_lib-Release-24edc6b46107fb243e0d.json",
+					"name" : "ptcClient_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "serialClient_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-serialClient_lib-Release-70e5c67ddb471082fba5.json",
+					"name" : "serialClient_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "source_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-source_lib-Release-b20303bb79a8b36ff031.json",
+					"name" : "source_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "udpParser_lib::@43583181f402ad81a691",
+					"jsonFile" : "target-udpParser_lib-Release-313d3df685eea0991e14.json",
+					"name" : "udpParser_lib",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Release-bbd63790cc02c3e99cd7.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver",
+		"source" : "/home/betsybot/HesaiLidar_ROS_2.0"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

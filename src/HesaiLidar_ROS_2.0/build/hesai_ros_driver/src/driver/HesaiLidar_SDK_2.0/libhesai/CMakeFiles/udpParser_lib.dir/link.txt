@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -std=c++17 -shared -Wl,-soname,libudpParser_lib.so -o libudpParser_lib.so CMakeFiles/udpParser_lib.dir/UdpParser/udp_parser.cc.o  -Wl,-rpath,/home/betsybot/HesaiLidar_ROS_2.0/build/hesai_ros_driver/src/driver/HesaiLidar_SDK_2.0/libhesai libplatutils_lib.so liblog_lib.so 

@@ -1,0 +1,61 @@
+rosbag2_bagfile_information:
+  version: 5
+  storage_identifier: sqlite3
+  duration:
+    nanoseconds: 16968471883
+  starting_time:
+    nanoseconds_since_epoch: 1755998405698512716
+  message_count: 171
+  topics_with_message_count:
+    - topic_metadata:
+        name: /lidar_points
+        type: sensor_msgs/msg/PointCloud2
+        serialization_format: cdr
+        offered_qos_profiles: "- history: 3\n  depth: 0\n  reliability: 1\n  durability: 2\n  deadline:\n    sec: 9223372036\n    nsec: 854775807\n  lifespan:\n    sec: 9223372036\n    nsec: 854775807\n  liveliness: 1\n  liveliness_lease_duration:\n    sec: 9223372036\n    nsec: 854775807\n  avoid_ros_namespace_conventions: false"
+      message_count: 171
+  compression_format: ""
+  compression_mode: ""
+  relative_file_paths:
+    - basement.bag_0.db3
+    - basement.bag_1.db3
+    - basement.bag_2.db3
+    - basement.bag_3.db3
+    - basement.bag_4.db3
+    - basement.bag_5.db3
+  files:
+    - path: basement.bag_0.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998405698512716
+      duration:
+        nanoseconds: 2979741751
+      message_count: 31
+    - path: basement.bag_1.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998408778160435
+      duration:
+        nanoseconds: 2999384713
+      message_count: 31
+    - path: basement.bag_2.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998411876174052
+      duration:
+        nanoseconds: 2898649356
+      message_count: 30
+    - path: basement.bag_3.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998414883658088
+      duration:
+        nanoseconds: 2986808154
+      message_count: 31
+    - path: basement.bag_4.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998417971103357
+      duration:
+        nanoseconds: 2996375430
+      message_count: 31
+    - path: basement.bag_5.db3
+      starting_time:
+        nanoseconds_since_epoch: 1755998421078115018
+      duration:
+        nanoseconds: 1588869581
+      message_count: 17

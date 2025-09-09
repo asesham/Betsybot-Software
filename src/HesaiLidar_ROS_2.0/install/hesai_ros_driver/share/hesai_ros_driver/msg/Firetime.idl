@@ -1,0 +1,13 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from hesai_ros_driver/msg/msg_ros2/Firetime.msg
+// generated code does not contain a copyright notice
+
+
+module hesai_ros_driver {
+  module msg {
+    typedef double double__512[512];
+    struct Firetime {
+      double__512 data;
+    };
+  };
+};
